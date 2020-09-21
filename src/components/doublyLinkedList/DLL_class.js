@@ -9,7 +9,7 @@ class Node {
   }
 }
 
-export class DLinkedList {
+class DLinkedList {
   constructor(data = null) {
     const newNode = new Node(data);
     this.head = newNode;
@@ -174,6 +174,8 @@ export class DLinkedList {
     return nodes;
   }
 }
+
+export const DLL = new DLinkedList();
 
 // const myDoublyLinkedList = new DLinkedList(1);
 // myDoublyLinkedList.shift();

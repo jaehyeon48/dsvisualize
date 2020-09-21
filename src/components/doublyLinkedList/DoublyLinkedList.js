@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import { DLinkedList } from './DLL_class';
+import { DLL } from './DLL_class';
 import './doublyLinkedList.css';
 
 const DoublyLinkedList = () => {
-  let DOUBLYLINKEDLIST;
-  const [isDLLCreated, setIsDLLCreated] = useState(false);
   const [nodeData, setNodeData] = useState([]);
   const [inputData, setInputData] = useState('');
   const [inputIndex, setInputIndex] = useState('');
@@ -18,21 +16,14 @@ const DoublyLinkedList = () => {
     setInputIndex(e.target.value);
   }
 
-  const handleCreateDLL = () => {
-    if (inputData.trim() === '') {
-      return alert("Please input valid data");
-    }
-    DOUBLYLINKEDLIST = new DLinkedList(inputData);
-    setIsDLLCreated(true);
-    setNodeData(DOUBLYLINKEDLIST.getAllNodesForRender());
+  const handleAppendDLL = () => {
+    DLL.append(inputData);
+    setNodeData(DLL.getAllNodesForRender());
     setInputData('');
   }
 
   const handleClearDLL = () => {
-    if (DOUBLYLINKEDLIST) {
-      DOUBLYLINKEDLIST.clear();
-      setNodeData(DOUBLYLINKEDLIST.getAllNodesForRender());
-    }
+
   }
 
   return (
@@ -61,40 +52,31 @@ const DoublyLinkedList = () => {
         </div>
         <div className="dll-buttons">
           <button
-            className="btn btn-dll-create"
-            type="button"
-            onClick={handleCreateDLL}
-          >CREATE</button>
-          <button
             className="btn btn-dll-append"
             type="button"
-            disabled={!isDLLCreated}
+            onClick={handleAppendDLL}
           >APPEND</button>
           <button
             className="btn btn-dll-remove"
             type="button"
-            disabled={!isDLLCreated}
           >REMOVE</button>
           <button
             className="btn btn-dll-unshift"
             type="button"
-            disabled={!isDLLCreated}
           >UNSHIFT</button>
           <button
             className="btn btn-dll-shift"
             type="button"
-            disabled={!isDLLCreated}
           >SHIFT</button>
           <button
             className="btn btn-dll-clear"
             type="button"
-            disabled={!isDLLCreated}
-            onClick={handleClearDLL}
+            onClick={() => handleClearDLL}
           >CLEAR</button>
         </div>
       </div>
       <div>
-        {isDLLCreated && nodeData.map(node => (
+        {nodeData.map(node => (
           <div key={node.id}>{node.data}</div>
         ))}
       </div>
