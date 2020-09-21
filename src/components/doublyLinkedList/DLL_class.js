@@ -17,7 +17,7 @@ export class DLinkedList {
   // add data to the last place of the list
   append(data) {
     const newNode = new Node(data);
-    if (this.length == 0) {
+    if (this.length === 0) {
       this.head = this.tail = newNode;
     }
     else {
@@ -30,11 +30,11 @@ export class DLinkedList {
 
   // remove data at the last place of the list
   pop() {
-    if (this.length == 0) {
+    if (this.length === 0) {
       console.log("The list is empty. Cannot pop().");
       return;
     }
-    else if (length == 1) {
+    else if (this.length === 1) {
       this.head = this.tail = null;
     }
     else {
@@ -47,7 +47,7 @@ export class DLinkedList {
   // add data to the first place of the list
   unshift(data) {
     const newNode = new Node(data);
-    if (this.length == 0) {
+    if (this.length === 0) {
       this.head = this.tail = newNode;
     }
     else {
@@ -60,11 +60,11 @@ export class DLinkedList {
 
   // remove data at the first place of the list
   shift() {
-    if (this.length == 0) {
+    if (this.length === 0) {
       console.log("The list is empty. Cannot shift().");
       return;
     }
-    else if (this.length == 1) {
+    else if (this.length === 1) {
       this.head = this.tail = null;
     }
     else {
