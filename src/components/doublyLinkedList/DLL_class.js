@@ -10,11 +10,10 @@ class Node {
 }
 
 class DLinkedList {
-  constructor(data = null) {
-    const newNode = new Node(data);
-    this.head = newNode;
-    this.tail = newNode;
-    this.length = 1;
+  constructor() {
+    this.head = null
+    this.tail = null;
+    this.length = 0;
   }
 
   // add data to the last place of the list
@@ -81,7 +80,7 @@ class DLinkedList {
   insertAt(insertIndex, data) {
     if (insertIndex < 0 || insertIndex > this.length) {
       console.log("Insert index out of bounds.");
-      return;
+      return -1;
     }
     else if (insertIndex === 0) {
       return this.unshift(data);
@@ -107,14 +106,14 @@ class DLinkedList {
   removeAt(removeIndex) {
     if (removeIndex < 0 || removeIndex >= this.length) {
       console.log("Remove index out of bounds.");
-      return;
+      return -1;
     }
     else if (this.length === 0) {
       console.log("The list is empty. Cannot removeAt().");
       return;
     }
     else if (removeIndex === 0) {
-      return this.unshift();
+      return this.shift();
     }
     else if (removeIndex === this.length - 1) {
       return this.pop();
