@@ -16,13 +16,18 @@ const DoublyLinkedList = () => {
     setInputIndex(e.target.value);
   }
 
+  const handleSetNodeData = () => {
+    setNodeData(DLL.getAllNodesForRender());
+    setInputData('');
+    setInputIndex('');
+  }
+
   const handleAppendDLL = () => {
     if (inputData.trim() === '') {
       return alert('Please input valid data.');
     }
     DLL.append(inputData);
-    setNodeData(DLL.getAllNodesForRender());
-    setInputData('');
+    handleSetNodeData();
   }
 
   const handlePopDLL = () => {
@@ -30,7 +35,7 @@ const DoublyLinkedList = () => {
       return alert("The list is empty.");
     }
     DLL.pop();
-    setNodeData(DLL.getAllNodesForRender());
+    handleSetNodeData();
   }
 
   const handleUnshiftDLL = () => {
@@ -38,8 +43,7 @@ const DoublyLinkedList = () => {
       return alert('Please input valid data');
     }
     DLL.unshift(inputData);
-    setNodeData(DLL.getAllNodesForRender());
-    setInputData('');
+    handleSetNodeData();
   }
 
   const handleShiftDLL = () => {
@@ -47,7 +51,7 @@ const DoublyLinkedList = () => {
       return alert("The list is empty.");
     }
     DLL.shift();
-    setNodeData(DLL.getAllNodesForRender());
+    handleSetNodeData();
   }
 
   const handleInsertAtDLL = () => {
@@ -62,9 +66,7 @@ const DoublyLinkedList = () => {
     if (insertAtResult === -1) {
       return alert('Index out of bounds.');
     }
-    setNodeData(DLL.getAllNodesForRender());
-    setInputData('');
-    setInputIndex('');
+    handleSetNodeData();
   }
 
   const handleRemoveAtDLL = () => {
@@ -75,9 +77,7 @@ const DoublyLinkedList = () => {
     if (removeAtResult === -1) {
       return alert('Index out of bounds.');
     }
-    setNodeData(DLL.getAllNodesForRender());
-    setInputData('');
-    setInputIndex('');
+    handleSetNodeData();
   }
 
   const handleClearDLL = () => {
@@ -86,7 +86,7 @@ const DoublyLinkedList = () => {
     }
     if (window.confirm('Would you clear the list?')) {
       DLL.clear();
-      setNodeData(DLL.getAllNodesForRender());
+      handleSetNodeData();
     }
   }
 
