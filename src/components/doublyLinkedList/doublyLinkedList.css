@@ -49,54 +49,63 @@
   width: 65%;
 }
 
-.btn-dll-create {
+.btn-dll-append {
   background-color: #923ada;
   color: #fff;
 }
 
-.btn-dll-create:hover {
+.btn-dll-append:hover {
   background-color: #5b1c8f;
 }
 
-.btn-dll-append {
+.btn-dll-pop {
   background-color: #30aee0;
   color: #fff;
 }
 
-.btn-dll-append:hover {
+.btn-dll-pop:hover {
   background-color: #2280a5;
 }
 
-.btn-dll-pop {
+.btn-dll-unshift {
   background-color: #0fb6b0;
   color: #fff;
 }
 
-.btn-dll-pop:hover {
+.btn-dll-unshift:hover {
   background-color: #0c5e5b;
 }
 
-.btn-dll-unshift {
+.btn-dll-shift {
   background-color: #c9eb41;
 }
 
-.btn-dll-unshift:hover {
-  background-color: #859c27;
+.btn-dll-shift:hover {
+  background-color: #8fa829;
 }
 
-.btn-dll-shift {
+.btn-dll-insertAt {
   background-color: #eedf3e;
 }
 
-.btn-dll-shift:hover {
-  background-color: #aaa02d;
+.btn-dll-insertAt:hover {
+  background-color: #c2b529;
 }
 
-.btn-dll-clear {
+.btn-dll-removeAt {
   background-color: #f78b38;
   color: #fff;
 }
 
-.btn-dll-clear:hover {
+.btn-dll-removeAt:hover {
   background-color: #c46f2e;
+}
+
+.btn-dll-clear {
+  background-color: #f34343;
+  color: #fff;
+}
+
+.btn-dll-clear:hover {
+  background-color: #bb3434;
 }

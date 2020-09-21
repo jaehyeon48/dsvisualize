@@ -50,6 +50,36 @@ const DoublyLinkedList = () => {
     setNodeData(DLL.getAllNodesForRender());
   }
 
+  const handleInsertAtDLL = () => {
+    if (inputIndex.trim() === '' || isNaN(parseInt(inputIndex))) {
+      return alert('Please input valid index');
+    }
+    if (inputData.trim() === '') {
+      return alert('Please input valid data');
+    }
+
+    const insertAtResult = DLL.insertAt(parseInt(inputIndex), inputData);
+    if (insertAtResult === -1) {
+      return alert('Index out of bounds.');
+    }
+    setNodeData(DLL.getAllNodesForRender());
+    setInputData('');
+    setInputIndex('');
+  }
+
+  const handleRemoveAtDLL = () => {
+    if (inputIndex.trim() === '' || isNaN(parseInt(inputIndex))) {
+      return alert('Please input valid index');
+    }
+    const removeAtResult = DLL.removeAt(parseInt(inputIndex));
+    if (removeAtResult === -1) {
+      return alert('Index out of bounds.');
+    }
+    setNodeData(DLL.getAllNodesForRender());
+    setInputData('');
+    setInputIndex('');
+  }
+
   const handleClearDLL = () => {
     if (nodeData.length === 0) {
       return alert("The list is empty.");
@@ -105,6 +135,16 @@ const DoublyLinkedList = () => {
             type="button"
             onClick={handleShiftDLL}
           >SHIFT</button>
+          <button
+            className="btn btn-dll-insertAt"
+            type="button"
+            onClick={handleInsertAtDLL}
+          >INSERT AT</button>
+          <button
+            className="btn btn-dll-removeAt"
+            type="button"
+            onClick={handleRemoveAtDLL}
+          >REMOVE AT</button>
           <button
             className="btn btn-dll-clear"
             type="button"
