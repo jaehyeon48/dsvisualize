@@ -30,6 +30,15 @@ const DoublyLinkedList = () => {
     setNodeData(DLL.getAllNodesForRender());
   }
 
+  const handleUnshiftDLL = () => {
+    if (inputData.trim() === '') {
+      return alert('Please input valid data');
+    }
+    DLL.unshift(inputData);
+    setNodeData(DLL.getAllNodesForRender());
+    setInputData('');
+  }
+
   const handleClearDLL = () => {
     if (window.confirm('Would you clear the list?')) {
       DLL.clear();
@@ -75,6 +84,7 @@ const DoublyLinkedList = () => {
           <button
             className="btn btn-dll-unshift"
             type="button"
+            onClick={handleUnshiftDLL}
           >UNSHIFT</button>
           <button
             className="btn btn-dll-shift"
