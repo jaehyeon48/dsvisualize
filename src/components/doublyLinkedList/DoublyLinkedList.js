@@ -23,7 +23,10 @@ const DoublyLinkedList = () => {
   }
 
   const handleClearDLL = () => {
-
+    if (window.confirm('Would you clear the list?')) {
+      DLL.clear();
+      setNodeData(DLL.getAllNodesForRender());
+    }
   }
 
   return (
@@ -71,7 +74,7 @@ const DoublyLinkedList = () => {
           <button
             className="btn btn-dll-clear"
             type="button"
-            onClick={() => handleClearDLL}
+            onClick={handleClearDLL}
           >CLEAR</button>
         </div>
       </div>
