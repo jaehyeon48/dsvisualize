@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class DLinkedList {
+export class DLinkedList {
   constructor(data = null) {
     const newNode = new Node(data);
     this.head = newNode;
@@ -157,16 +157,16 @@ class DLinkedList {
   }
 }
 
-const myDoublyLinkedList = new DLinkedList(1);
-myDoublyLinkedList.shift();
-myDoublyLinkedList.append(2);
-myDoublyLinkedList.append(3);
-myDoublyLinkedList.unshift(100);
-myDoublyLinkedList.append(4);
-myDoublyLinkedList.insertAt(4, 'a');
+// const myDoublyLinkedList = new DLinkedList(1);
+// myDoublyLinkedList.shift();
+// myDoublyLinkedList.append(2);
+// myDoublyLinkedList.append(3);
+// myDoublyLinkedList.unshift(100);
+// myDoublyLinkedList.append(4);
+// myDoublyLinkedList.insertAt(4, 'a');
 
-myDoublyLinkedList.removeAt(2);
+// myDoublyLinkedList.removeAt(2);
 
-myDoublyLinkedList.clear();
+// myDoublyLinkedList.clear();
 
-myDoublyLinkedList.print();
+// myDoublyLinkedList.print();
