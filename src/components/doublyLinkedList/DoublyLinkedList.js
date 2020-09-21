@@ -26,6 +26,9 @@ const DoublyLinkedList = () => {
   }
 
   const handlePopDLL = () => {
+    if (nodeData.length === 0) {
+      return alert("The list is empty.");
+    }
     DLL.pop();
     setNodeData(DLL.getAllNodesForRender());
   }
@@ -39,7 +42,18 @@ const DoublyLinkedList = () => {
     setInputData('');
   }
 
+  const handleShiftDLL = () => {
+    if (nodeData.length === 0) {
+      return alert("The list is empty.");
+    }
+    DLL.shift();
+    setNodeData(DLL.getAllNodesForRender());
+  }
+
   const handleClearDLL = () => {
+    if (nodeData.length === 0) {
+      return alert("The list is empty.");
+    }
     if (window.confirm('Would you clear the list?')) {
       DLL.clear();
       setNodeData(DLL.getAllNodesForRender());
@@ -89,6 +103,7 @@ const DoublyLinkedList = () => {
           <button
             className="btn btn-dll-shift"
             type="button"
+            onClick={handleShiftDLL}
           >SHIFT</button>
           <button
             className="btn btn-dll-clear"
