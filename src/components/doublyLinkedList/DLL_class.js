@@ -1,8 +1,11 @@
+import { v4 as uuidv4 } from 'uuid';
+
 class Node {
   constructor(_data = null, _prev = null, _next = null) {
     this.prev = _prev;
     this.next = _next;
     this.data = _data;
+    this.id = uuidv4();
   }
 }
 
@@ -161,7 +164,10 @@ export class DLinkedList {
     const nodes = [];
     let currentNode = this.head;
     while (currentNode) {
-      nodes.push(currentNode.data);
+      nodes.push({
+        id: currentNode.id,
+        data: currentNode.data
+      });
       currentNode = currentNode.next;
     }
 

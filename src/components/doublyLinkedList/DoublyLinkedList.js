@@ -25,6 +25,14 @@ const DoublyLinkedList = () => {
     DOUBLYLINKEDLIST = new DLinkedList(inputData);
     setIsDLLCreated(true);
     setNodeData(DOUBLYLINKEDLIST.getAllNodesForRender());
+    setInputData('');
+  }
+
+  const handleClearDLL = () => {
+    if (DOUBLYLINKEDLIST) {
+      DOUBLYLINKEDLIST.clear();
+      setNodeData(DOUBLYLINKEDLIST.getAllNodesForRender());
+    }
   }
 
   return (
@@ -77,11 +85,17 @@ const DoublyLinkedList = () => {
             type="button"
             disabled={!isDLLCreated}
           >SHIFT</button>
+          <button
+            className="btn btn-dll-clear"
+            type="button"
+            disabled={!isDLLCreated}
+            onClick={handleClearDLL}
+          >CLEAR</button>
         </div>
       </div>
       <div>
-        {isDLLCreated && nodeData.map(data => (
-          <div>{data}</div>
+        {isDLLCreated && nodeData.map(node => (
+          <div key={node.id}>{node.data}</div>
         ))}
       </div>
     </div>

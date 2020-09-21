@@ -50,43 +50,53 @@
 }
 
 .btn-dll-create {
-  background-color: #0b4e68;
+  background-color: #923ada;
   color: #fff;
 }
 
 .btn-dll-create:hover {
-  background-color: #2699c7;
+  background-color: #5b1c8f;
 }
 
 .btn-dll-append {
-  background-color: #0eada7;
+  background-color: #30aee0;
   color: #fff;
 }
 
 .btn-dll-append:hover {
-  background-color: #0c5e5b;
+  background-color: #2280a5;
 }
 
 .btn-dll-remove {
-  background-color: #c9eb41;
+  background-color: #0fb6b0;
+  color: #fff;
 }
 
 .btn-dll-remove:hover {
-  background-color: #859c27;
+  background-color: #0c5e5b;
 }
 
 .btn-dll-unshift {
-  background-color: #eedf3e;
+  background-color: #c9eb41;
 }
 
 .btn-dll-unshift:hover {
-  background-color: #aaa02d;
+  background-color: #859c27;
 }
 
 .btn-dll-shift {
-  background-color: #f78b38;
+  background-color: #eedf3e;
 }
 
 .btn-dll-shift:hover {
+  background-color: #aaa02d;
+}
+
+.btn-dll-clear {
+  background-color: #f78b38;
+  color: #fff;
+}
+
+.btn-dll-clear:hover {
   background-color: #c46f2e;
 }
