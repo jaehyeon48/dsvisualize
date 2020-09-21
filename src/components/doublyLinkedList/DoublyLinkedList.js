@@ -22,6 +22,11 @@ const DoublyLinkedList = () => {
     setInputData('');
   }
 
+  const handlePopDLL = () => {
+    DLL.pop();
+    setNodeData(DLL.getAllNodesForRender());
+  }
+
   const handleClearDLL = () => {
     if (window.confirm('Would you clear the list?')) {
       DLL.clear();
@@ -60,9 +65,10 @@ const DoublyLinkedList = () => {
             onClick={handleAppendDLL}
           >APPEND</button>
           <button
-            className="btn btn-dll-remove"
+            className="btn btn-dll-pop"
             type="button"
-          >REMOVE</button>
+            onClick={handlePopDLL}
+          >POP</button>
           <button
             className="btn btn-dll-unshift"
             type="button"
