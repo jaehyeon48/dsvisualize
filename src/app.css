@@ -54,3 +54,8 @@ body {
   font-size: 1.1rem;
   cursor: pointer;
 }
+
+.btn:disabled {
+  background-color: #cecece !important;
+  cursor: not-allowed;
+}
