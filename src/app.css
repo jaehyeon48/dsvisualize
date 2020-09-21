@@ -46,3 +46,11 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #f5fafb;
 }
+
+.btn {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.7rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
