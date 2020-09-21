@@ -17,6 +17,9 @@ const DoublyLinkedList = () => {
   }
 
   const handleAppendDLL = () => {
+    if (inputData.trim() === '') {
+      return alert('Please input valid data.');
+    }
     DLL.append(inputData);
     setNodeData(DLL.getAllNodesForRender());
     setInputData('');
