@@ -155,6 +155,18 @@ export class DLinkedList {
       currentNode = currentNode.next;
     }
   }
+
+  // return all node data in the form of an array for rendering
+  getAllNodesForRender() {
+    const nodes = [];
+    let currentNode = this.head;
+    while (currentNode) {
+      nodes.push(currentNode.data);
+      currentNode = currentNode.next;
+    }
+
+    return nodes;
+  }
 }
 
 // const myDoublyLinkedList = new DLinkedList(1);

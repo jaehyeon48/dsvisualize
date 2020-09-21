@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
+import { DLinkedList } from './DLL_class';
 import './doublyLinkedList.css';
 
 const DoublyLinkedList = () => {
+  let DOUBLYLINKEDLIST;
+  const [isDLLCreated, setIsDLLCreated] = useState(false);
+  const [nodeData, setNodeData] = useState([]);
   const [inputData, setInputData] = useState('');
   const [inputIndex, setInputIndex] = useState('');
 
@@ -15,7 +19,12 @@ const DoublyLinkedList = () => {
   }
 
   const handleCreateDLL = () => {
-    console.log(inputData);
+    if (inputData.trim() === '') {
+      return alert("Please input valid data");
+    }
+    DOUBLYLINKEDLIST = new DLinkedList(inputData);
+    setIsDLLCreated(true);
+    setNodeData(DOUBLYLINKEDLIST.getAllNodesForRender());
   }
 
   return (
@@ -51,20 +60,29 @@ const DoublyLinkedList = () => {
           <button
             className="btn btn-dll-append"
             type="button"
+            disabled={!isDLLCreated}
           >APPEND</button>
           <button
             className="btn btn-dll-remove"
             type="button"
+            disabled={!isDLLCreated}
           >REMOVE</button>
           <button
             className="btn btn-dll-unshift"
             type="button"
+            disabled={!isDLLCreated}
           >UNSHIFT</button>
           <button
             className="btn btn-dll-shift"
             type="button"
+            disabled={!isDLLCreated}
           >SHIFT</button>
         </div>
+      </div>
+      <div>
+        {isDLLCreated && nodeData.map(data => (
+          <div>{data}</div>
+        ))}
       </div>
     </div>
   );
