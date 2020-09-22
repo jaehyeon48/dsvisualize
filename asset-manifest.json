@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/dsvisualizer/static/css/main.e0a3365f.chunk.css",
+    "main.css": "/dsvisualizer/static/css/main.47ea955a.chunk.css",
     "main.js": "/dsvisualizer/static/js/main.fc497a3a.chunk.js",
     "main.js.map": "/dsvisualizer/static/js/main.fc497a3a.chunk.js.map",
     "runtime-main.js": "/dsvisualizer/static/js/runtime-main.5ab8d443.js",
@@ -8,16 +8,16 @@
     "static/js/2.abcd7392.chunk.js": "/dsvisualizer/static/js/2.abcd7392.chunk.js",
     "static/js/2.abcd7392.chunk.js.map": "/dsvisualizer/static/js/2.abcd7392.chunk.js.map",
     "index.html": "/dsvisualizer/index.html",
-    "precache-manifest.5dbf01e52eb5d6521f9df024fa827b42.js": "/dsvisualizer/precache-manifest.5dbf01e52eb5d6521f9df024fa827b42.js",
+    "precache-manifest.1470ff366fc28766bde370013081f7eb.js": "/dsvisualizer/precache-manifest.1470ff366fc28766bde370013081f7eb.js",
     "service-worker.js": "/dsvisualizer/service-worker.js",
-    "static/css/main.e0a3365f.chunk.css.map": "/dsvisualizer/static/css/main.e0a3365f.chunk.css.map",
+    "static/css/main.47ea955a.chunk.css.map": "/dsvisualizer/static/css/main.47ea955a.chunk.css.map",
     "static/js/2.abcd7392.chunk.js.LICENSE.txt": "/dsvisualizer/static/js/2.abcd7392.chunk.js.LICENSE.txt",
     "static/media/app.css": "/dsvisualizer/static/media/Roboto-Regular.11eabca2.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.5ab8d443.js",
     "static/js/2.abcd7392.chunk.js",
-    "static/css/main.e0a3365f.chunk.css",
+    "static/css/main.47ea955a.chunk.css",
     "static/js/main.fc497a3a.chunk.js"
   ]
 }
