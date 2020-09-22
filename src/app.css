@@ -59,3 +59,26 @@ body {
   background-color: #cecece !important;
   cursor: not-allowed;
 }
+
+/* return to home component */
+.return-to-home {
+  width: 50px;
+  margin: 0 auto;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+
+.return-to-home:hover {
+  color: #cecece;
+}
+
+.return-to-home > svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 9px;
+}
+
+.return-to-home > span {
+  margin-top: 7px;
+  margin-left: 2px;
+}

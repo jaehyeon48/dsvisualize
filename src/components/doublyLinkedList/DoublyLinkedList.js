@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import ReturnToHome from '../ReturnToHome';
 import DllCanvas from './DllCanvas';
 import { DLL } from './DLL_class';
 import './doublyLinkedList.css';
@@ -110,79 +111,83 @@ const DoublyLinkedList = () => {
   }
 
   return (
-    <div className="doubly-linked-list">
-      <h1 className="ddl-header">Doubly Linked List</h1>
-      <div className="dll-actions">
-        <div className="dll-length">
-          Length: <span style={maxLengthColor()}>{nodeLength}</span> / 12
+    <React.Fragment>
+      <ReturnToHome />
+      <div className="doubly-linked-list">
+        <h1 className="ddl-header">Doubly Linked List</h1>
+        <div className="dll-actions">
+          <div className="dll-length">
+            Length: <span style={maxLengthColor()}>{nodeLength}</span> / 12
           </div>
-        <div className="dll-input">
-          <label className="dll-input-label">
-            Index:
+          <div className="dll-input">
+            <label className="dll-input-label">
+              Index:
             <input
-              className="dll-input-field"
-              type="text"
-              value={inputIndex}
-              onChange={handleChangeInputIndex}
-            />
-          </label>
-          <label className="dll-input-label">
-            Data:
+                className="dll-input-field"
+                type="text"
+                value={inputIndex}
+                onChange={handleChangeInputIndex}
+              />
+            </label>
+            <label className="dll-input-label">
+              Data:
             <input
-              className="dll-input-field"
-              type="text"
-              value={inputData}
-              onChange={handleChangeInputData}
-            />
-          </label>
+                className="dll-input-field"
+                type="text"
+                value={inputData}
+                onChange={handleChangeInputData}
+              />
+            </label>
+          </div>
+          <div className="dll-buttons">
+            <button
+              className="btn btn-dll-append"
+              type="button"
+              onClick={handleAppendDLL}
+              disabled={isMaxLength}
+            >APPEND</button>
+            <button
+              className="btn btn-dll-pop"
+              type="button"
+              onClick={handlePopDLL}
+            >POP</button>
+            <button
+              className="btn btn-dll-unshift"
+              type="button"
+              onClick={handleUnshiftDLL}
+              disabled={isMaxLength}
+            >UNSHIFT</button>
+            <button
+              className="btn btn-dll-shift"
+              type="button"
+              onClick={handleShiftDLL}
+            >SHIFT</button>
+            <button
+              className="btn btn-dll-insertAt"
+              type="button"
+              onClick={handleInsertAtDLL}
+              disabled={isMaxLength}
+            >INSERT AT</button>
+            <button
+              className="btn btn-dll-removeAt"
+              type="button"
+              onClick={handleRemoveAtDLL}
+            >REMOVE AT</button>
+            <button
+              className="btn btn-dll-clear"
+              type="button"
+              onClick={handleClearDLL}
+            >CLEAR</button>
+          </div>
         </div>
-        <div className="dll-buttons">
-          <button
-            className="btn btn-dll-append"
-            type="button"
-            onClick={handleAppendDLL}
-            disabled={isMaxLength}
-          >APPEND</button>
-          <button
-            className="btn btn-dll-pop"
-            type="button"
-            onClick={handlePopDLL}
-          >POP</button>
-          <button
-            className="btn btn-dll-unshift"
-            type="button"
-            onClick={handleUnshiftDLL}
-            disabled={isMaxLength}
-          >UNSHIFT</button>
-          <button
-            className="btn btn-dll-shift"
-            type="button"
-            onClick={handleShiftDLL}
-          >SHIFT</button>
-          <button
-            className="btn btn-dll-insertAt"
-            type="button"
-            onClick={handleInsertAtDLL}
-            disabled={isMaxLength}
-          >INSERT AT</button>
-          <button
-            className="btn btn-dll-removeAt"
-            type="button"
-            onClick={handleRemoveAtDLL}
-          >REMOVE AT</button>
-          <button
-            className="btn btn-dll-clear"
-            type="button"
-            onClick={handleClearDLL}
-          >CLEAR</button>
+        <div className="node-items">
+          <DllCanvas
+            nodes={nodeData}
+          />
         </div>
       </div>
-      <div className="node-items">
-        <DllCanvas
-          nodes={nodeData}
-        />
-      </div>
-    </div>
+    </React.Fragment>
+
   );
 }
 
