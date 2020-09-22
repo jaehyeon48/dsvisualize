@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+import DllCanvas from './DllCanvas';
 import { DLL } from './DLL_class';
 import './doublyLinkedList.css';
 
 const DoublyLinkedList = () => {
   const [nodeData, setNodeData] = useState([]);
+  const [nodeLength, setNodeLength] = useState(0);
   const [inputData, setInputData] = useState('');
   const [inputIndex, setInputIndex] = useState('');
 
@@ -18,6 +20,7 @@ const DoublyLinkedList = () => {
 
   const handleSetNodeData = () => {
     setNodeData(DLL.getAllNodesForRender());
+    setNodeLength(DLL.getLength());
     setInputData('');
     setInputIndex('');
   }
@@ -94,6 +97,9 @@ const DoublyLinkedList = () => {
     <div className="doubly-linked-list">
       <h1 className="ddl-header">Doubly Linked List</h1>
       <div className="dll-actions">
+        <div className="dll-length">
+          Length: {nodeLength} / 10
+          </div>
         <div className="dll-input">
           <label className="dll-input-label">
             Index:
@@ -152,10 +158,16 @@ const DoublyLinkedList = () => {
           >CLEAR</button>
         </div>
       </div>
-      <div>
+      <div className="node-items">
         {nodeData.map(node => (
-          <div key={node.id}>{node.data}</div>
+          <div
+            key={node.id}
+            className="node-item"
+          >{node.data}</div>
         ))}
+        <DllCanvas
+          nodes={nodeData}
+        />
       </div>
     </div>
   );

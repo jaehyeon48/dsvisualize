@@ -158,6 +158,10 @@ class DLinkedList {
     }
   }
 
+  getLength() {
+    return this.length;
+  }
+
   // return all node data in the form of an array for rendering
   getAllNodesForRender() {
     const nodes = [];
