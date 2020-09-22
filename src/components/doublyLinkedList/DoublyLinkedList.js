@@ -7,8 +7,18 @@ import './doublyLinkedList.css';
 const DoublyLinkedList = () => {
   const [nodeData, setNodeData] = useState([]);
   const [nodeLength, setNodeLength] = useState(0);
+  const [isMaxLength, setIsMaxLength] = useState(false);
   const [inputData, setInputData] = useState('');
   const [inputIndex, setInputIndex] = useState('');
+
+  useEffect(() => {
+    if (nodeLength === 10) {
+      setIsMaxLength(true);
+    }
+    else {
+      setIsMaxLength(false);
+    }
+  }, [nodeLength]);
 
   const handleChangeInputData = (e) => {
     setInputData(e.target.value);
@@ -125,6 +135,7 @@ const DoublyLinkedList = () => {
             className="btn btn-dll-append"
             type="button"
             onClick={handleAppendDLL}
+            disabled={isMaxLength}
           >APPEND</button>
           <button
             className="btn btn-dll-pop"
@@ -135,6 +146,7 @@ const DoublyLinkedList = () => {
             className="btn btn-dll-unshift"
             type="button"
             onClick={handleUnshiftDLL}
+            disabled={isMaxLength}
           >UNSHIFT</button>
           <button
             className="btn btn-dll-shift"
@@ -145,6 +157,7 @@ const DoublyLinkedList = () => {
             className="btn btn-dll-insertAt"
             type="button"
             onClick={handleInsertAtDLL}
+            disabled={isMaxLength}
           >INSERT AT</button>
           <button
             className="btn btn-dll-removeAt"
