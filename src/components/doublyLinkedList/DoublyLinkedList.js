@@ -12,7 +12,7 @@ const DoublyLinkedList = () => {
   const [inputIndex, setInputIndex] = useState('');
 
   useEffect(() => {
-    if (nodeLength === 10) {
+    if (nodeLength >= 12) {
       setIsMaxLength(true);
     }
     else {
@@ -103,12 +103,18 @@ const DoublyLinkedList = () => {
     }
   }
 
+  const maxLengthColor = () => {
+    if (isMaxLength) {
+      return { color: 'red' };
+    }
+  }
+
   return (
     <div className="doubly-linked-list">
       <h1 className="ddl-header">Doubly Linked List</h1>
       <div className="dll-actions">
         <div className="dll-length">
-          Length: {nodeLength} / 10
+          Length: <span style={maxLengthColor()}>{nodeLength}</span> / 12
           </div>
         <div className="dll-input">
           <label className="dll-input-label">
@@ -172,12 +178,6 @@ const DoublyLinkedList = () => {
         </div>
       </div>
       <div className="node-items">
-        {nodeData.map(node => (
-          <div
-            key={node.id}
-            className="node-item"
-          >{node.data}</div>
-        ))}
         <DllCanvas
           nodes={nodeData}
         />

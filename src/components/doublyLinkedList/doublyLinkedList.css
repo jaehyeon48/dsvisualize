@@ -120,5 +120,6 @@
 .node-items {
   position: relative;
   display: flex;
-  margin: 2rem 1rem 0;
+  margin: 5rem 1rem 0;
+  height: 700px;
 }
