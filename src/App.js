@@ -7,7 +7,7 @@ import './app.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/dsvisualizer">
       <Switch>
         <Route path="/dsvisualizer" component={Main} exact={true} />
         <Route path="/dll" component={DoublyLinkedList} exact={true} />
