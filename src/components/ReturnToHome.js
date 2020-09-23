@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 const ReturnToHome = () => {
   let history = useHistory();
   const redirectToHome = () => {
-    history.push('/dsvisualizer');
+    history.push('/');
   }
 
   return (
