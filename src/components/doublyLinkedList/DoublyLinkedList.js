@@ -114,7 +114,7 @@ const DoublyLinkedList = () => {
     <React.Fragment>
       <ReturnToHome />
       <div className="doubly-linked-list">
-        <h1 className="ddl-header">Doubly Linked List</h1>
+        <h1 className="dll-header">Doubly Linked List</h1>
         <div className="dll-actions">
           <div className="dll-length">
             Length: <span style={maxLengthColor()}>{nodeLength}</span> / 12
