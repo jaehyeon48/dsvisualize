@@ -9,7 +9,7 @@ function App() {
   return (
     <Router basename="/dsvisualizer">
       <Switch>
-        <Route path="/dsvisualizer" component={Main} exact={true} />
+        <Route path="/" component={Main} exact={true} />
         <Route path="/dll" component={DoublyLinkedList} exact={true} />
       </Switch>
     </Router>
