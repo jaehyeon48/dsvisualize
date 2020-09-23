@@ -1,49 +1,20 @@
 /* fonts */
 @font-face {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato';
   font-weight: 400;
-  font-style: normal;
-  src: url('./fonts/Roboto-Regular.ttf');
+  src: url('../src/fonts/Lato-Regular.ttf');
 }
 
 @font-face {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  font-style: italic;
-  src: url('./fonts/Roboto-Italic.ttf');
-}
-
-@font-face {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  src: url('./fonts/Roboto-Medium.ttf');
-}
-
-@font-face {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-style: italic;
-  src: url('./fonts/Roboto-MediumItalic.ttf');
-}
-
-@font-face {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato';
   font-weight: 700;
   font-style: normal;
-  src: url('./fonts/Roboto-Bold.ttf');
-}
-
-@font-face {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  font-style: italic;
-  src: url('./fonts/Roboto-BoldItalic.ttf');
+  src: url('./fonts/Lato-Bold.ttf');
 }
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato';
   background-color: #f5fafb;
 }
 
