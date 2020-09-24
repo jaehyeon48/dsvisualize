@@ -6,19 +6,21 @@
 }
 
 .main-page-header {
-  margin: 5rem 0;
+  margin: 5rem auto;
   font-size: 5rem;
+  text-align: center;
 }
 
 .select-data-structures {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 1100px;
   justify-content: center;
+  padding: 1rem;
 }
 
 .data-structures-item {
-  width: 360px;
+  width: 35%;
   margin: 2rem 1.5rem;
   padding: 2rem;
   font-size: 1.5rem;
@@ -66,4 +68,30 @@
 
 .bst:hover {
   background-color: #aa6a2a;
+}
+
+@media only screen and (max-width: 1024px) {
+  .main-page-header {
+    font-size: 4.3rem;
+  }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 1024px) {
+  .main-page-header {
+    font-size: 3.8rem;
+  }
+
+  .data-structures-item {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .main-page-header {
+    font-size: 3rem;
+  }
+
+  .data-structures-item {
+    width: 65%;
+  }
 }
