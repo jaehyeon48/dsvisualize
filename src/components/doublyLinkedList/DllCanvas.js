@@ -152,9 +152,9 @@ const DllCanvas = ({
           drawBackwardArrow(ctx, arrowFromX, bArrowY, arrowToX, bArrowY);
         }
         else { // vertical arrow
-          // vertical forward arrow's (^) x point
+          // vertical forward arrow's (v) x point
           const vertFwArrowX = canvasWidth - startingPointX - (rectWidth * 0.667);
-          // vertical backward arrow's (v) x point
+          // vertical backward arrow's (^) x point
           const vertBwArrowX = canvasWidth - startingPointX - (rectWidth * 0.333);
           // vertical arrows' "from" y point
           const vertArrowFromY = startingPointY + rectHeight;
@@ -199,9 +199,9 @@ const DllCanvas = ({
           drawBackwardArrow(ctx, arrowFromX, bArrowY, arrowToX, bArrowY);
         }
         else { // vertical arrow
-          // vertical forward arrow's (^) x point
+          // vertical forward arrow's (v) x point
           const vertFwArrowX = startingPointX + rectWidth * 0.333;
-          // vertical backward arrow's (v) x point
+          // vertical backward arrow's (^) x point
           const vertBwArrowX = startingPointX + rectWidth * 0.667;
           // vertical arrows' "from" y point
           const vertArrowFromY = canvasHeight - (startingPointY + rectHeight + vertArrowLen);
