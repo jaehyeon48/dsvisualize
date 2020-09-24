@@ -5,74 +5,204 @@ const DllCanvas = ({
 }) => {
   const canvasRef = useRef(null);
 
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
+    const canvasWidth = canvas.offsetWidth;
+    const canvasHeight = canvas.offsetHeight;
     canvas.style.width = '100%';
     canvas.style.height = '100%';
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
 
-    draw(ctx, nodes);
-    // canvas_arrow(ctx, 40, 0, 100, 10);
+    draw(ctx, nodes, canvasWidth, canvasHeight);
   }, [nodes]);
 
-  const draw = (ctx, nodes) => {
+  const draw = (ctx, nodes, canvasWidth, canvasHeight) => {
+    // define rectangle's width and height with respect to the canvas' size
+    let rectWidth;
+    let rectHeight;
+    let startingPointX;
+    let startingPointY;
+    let horizArrowLen; // horizontal arrow's length
+    let vertArrowLen; // vertical arrow's length
+    let fontSize;
+    const lineHeightOfData = 20; // line height of data inside of each nodes
+    const maxWidthOfData = 200; // maximum width of data inside of each nodes
+    if (canvasWidth >= 1408) { // 1440px wide
+      rectWidth = canvasWidth * 0.17;
+      rectHeight = canvasHeight * 0.2;
+      startingPointX = canvasWidth * 0.01;
+      startingPointY = canvasHeight * 0.05;
+      horizArrowLen = canvasWidth * 0.1;
+      vertArrowLen = canvasHeight * 0.15;
+      fontSize = 24;
+    }
+    else if (canvasWidth >= 992) { // 1024px wide
+      rectWidth = canvasWidth * 0.1682;
+      rectHeight = canvasHeight * 0.1748;
+      startingPointX = canvasWidth * 0.01;
+      startingPointY = canvasHeight * 0.05;
+      horizArrowLen = canvasWidth * 0.1024;
+      vertArrowLen = canvasHeight * 0.1878;
+      fontSize = 22;
+
+    }
+    else if (canvasWidth >= 736) { // 768px wide
+      rectWidth = canvasWidth * 0.1502;
+      rectHeight = canvasHeight * 0.1748;
+      startingPointX = canvasWidth * 0.01;
+      startingPointY = canvasHeight * 0.05;
+      horizArrowLen = canvasWidth * 0.1264;
+      vertArrowLen = canvasHeight * 0.1878;
+      fontSize = 18;
+
+    }
     const nodeLength = nodes.length;
     nodes.forEach((nodeData, i) => {
       ctx.strokeStyle = '#003FFF';
       ctx.fillStyle = '#000';
       ctx.textAlign = 'start';
       ctx.shadowBlur = 2;
-      ctx.font = 'normal 22px Roboto';
+      ctx.font = `normal ${fontSize}px sans-serif`;
 
       if (i < 4) {
-        ctx.strokeRect(30 + 400 * i, 20, 250, 120);
-        printData(ctx, nodeData.data, 55 + 400 * i, 50, 20, 200);
+        // x, y point of a rectangle, respectively
+        const rectX = startingPointX + (rectWidth + horizArrowLen) * i;
+        const rectY = startingPointY;
+        // x, y point of print, respectively
+        const printX = (startingPointX + rectWidth * 0.1) + (rectWidth + horizArrowLen) * i;
+        const printY = startingPointY + (rectHeight * 0.25);
+
+        ctx.strokeRect(rectX, rectY, rectWidth, rectHeight);
+        printData(ctx, nodeData, printX, printY, lineHeightOfData, maxWidthOfData);
+
         // print "head" text
         ctx.fillStyle = "red";
         if (i === 0) {
-          ctx.fillText('head', 135, 16);
+          const headTextWidth = ctx.measureText('head').width;
+          const headTextX = startingPointX + (rectWidth - headTextWidth) / 2; // x point of "head" text
+          const headTextY = startingPointY * 0.8 // y point of "head" text
+          ctx.fillText('head', headTextX, headTextY);
         }
         if (i !== 0) {
-          drawForwardArrow(ctx, 280 + 400 * (i - 1), 65, 30 + 400 * i, 65);
-          drawBackwardArrow(ctx, 280 + 400 * (i - 1), 85, 30 + 400 * i, 85);
+          // both arrows' "from" x point
+          const arrowFromX = (startingPointX + rectWidth) + (horizArrowLen + rectWidth) * (i - 1);
+          // y point of forward arrow (-->)
+          const fArrowY = startingPointY + (rectHeight * 0.333);
+          // both arrows' "to" x point
+          const arrowToX = startingPointX + (rectWidth + horizArrowLen) * i;
+          // y point of backward arrow (<--)
+          const bArrowY = startingPointY + (rectHeight * 0.667);
+
+          drawForwardArrow(ctx, arrowFromX, fArrowY, arrowToX, fArrowY);
+          drawBackwardArrow(ctx, arrowFromX, bArrowY, arrowToX, bArrowY);
         }
         if (i === nodeLength - 1) { // if the last node, print "tail" text
           ctx.fillStyle = "red";
-          ctx.fillText("tail", 142 + 400 * i, 160);
+          const tailTextWidth = ctx.measureText('tail').width;
+          // x point of "tail" text
+          const tailTextX = startingPointX + (rectWidth - tailTextWidth) / 2 + (rectWidth + horizArrowLen) * i
+          // y point of "tail" text
+          const tailTextY = (startingPointY * 1.65) + rectHeight;
+
+          ctx.fillText("tail", tailTextX, tailTextY);
         }
       }
       else if (i >= 4 && i < 8) {
-        ctx.strokeRect(1230 - 400 * (i % 4), 250, 250, 120);
-        printData(ctx, nodeData.data, 1255 - 400 * (i % 4), 280, 20, 200);
+        // x, y point of a rectangle, respectively
+        const rectX = canvasWidth - (startingPointX + rectWidth) - (horizArrowLen + rectWidth) * (i - 4);
+        const rectY = startingPointY + rectHeight + vertArrowLen;
+        // x, y point of print, respectively
+        const printX = canvasWidth - (startingPointX + rectWidth * 0.9) - (horizArrowLen + rectWidth) * (i - 4);
+        const printY = startingPointY + rectHeight * 1.25 + vertArrowLen;
+
+        ctx.strokeRect(rectX, rectY, rectWidth, rectHeight);
+        printData(ctx, nodeData, printX, printY, lineHeightOfData, maxWidthOfData);
+
         if (i !== 4) {
-          drawForwardArrow(ctx, 1230 - 400 * (i % 5), 295, 1480 - 400 * ((i + 1) % 5), 295);
-          drawBackwardArrow(ctx, 1230 - 400 * (i % 5), 315, 1480 - 400 * ((i + 1) % 5), 315);
+          // both arrows' "from" x point
+          const arrowFromX = canvasWidth - startingPointX - (rectWidth + horizArrowLen) * (i - 4);
+          // "from" y point of forward arrow (-->)
+          const fArrowY = startingPointY + rectHeight * 1.333 + vertArrowLen;
+          // both arrows' "to" x point
+          const arrowToX = canvasWidth - (startingPointX + rectWidth) - (horizArrowLen + rectWidth) * (i - 5);
+          // y point of backward arrow (<--)
+          const bArrowY = startingPointY + rectHeight * 1.667 + vertArrowLen;
+
+          drawForwardArrow(ctx, arrowFromX, fArrowY, arrowToX, fArrowY);
+          drawBackwardArrow(ctx, arrowFromX, bArrowY, arrowToX, bArrowY);
         }
-        else {
-          drawForwardArrow(ctx, 1340, 140, 1340, 250);
-          drawBackwardArrow(ctx, 1360, 140, 1360, 250);
+        else { // vertical arrow
+          // vertical forward arrow's (^) x point
+          const vertFwArrowX = canvasWidth - startingPointX - (rectWidth * 0.667);
+          // vertical backward arrow's (v) x point
+          const vertBwArrowX = canvasWidth - startingPointX - (rectWidth * 0.333);
+          // vertical arrows' "from" y point
+          const vertArrowFromY = startingPointY + rectHeight;
+          // vertical arrow's "to" y point
+          const vertArrowToY = startingPointY + rectHeight + vertArrowLen;
+
+          drawForwardArrow(ctx, vertFwArrowX, vertArrowFromY, vertFwArrowX, vertArrowToY);
+          drawBackwardArrow(ctx, vertBwArrowX, vertArrowFromY, vertBwArrowX, vertArrowToY);
         }
         if (i === nodeLength - 1) { // if the last node, print "tail" text
           ctx.fillStyle = "red";
-          ctx.fillText("tail", 1345 - 400 * (i % 4), 390);
+          const tailTextWidth = ctx.measureText('tail').width;
+          // x point of "tail" text
+          const tailTextX = canvasWidth - startingPointX - tailTextWidth - (rectWidth - tailTextWidth) / 2 - (rectWidth + horizArrowLen) * (i - 4);
+          // y point of "tail" text
+          const tailTextY = (startingPointY * 1.8) + rectHeight * 2 + vertArrowLen;
+
+          ctx.fillText("tail", tailTextX, tailTextY);
         }
       }
       else if (i >= 8) {
-        ctx.strokeRect(30 + 400 * (i % 8), 480, 250, 120);
-        printData(ctx, nodeData.data, 55 + 400 * (i % 8), 510, 20, 200);
+        // x, y point of a rectangle, respectively
+        const rectX = startingPointX + (rectWidth + horizArrowLen) * (i - 8);
+        const rectY = startingPointY + rectHeight * 2 + vertArrowLen * 2;
+        // x, y point of print, respectively
+        const printX = (startingPointX + rectWidth * 0.1) + (rectWidth + horizArrowLen) * (i - 8);
+        const printY = canvasHeight - (startingPointY + rectHeight * 0.75);
+
+        ctx.strokeRect(rectX, rectY, rectWidth, rectHeight);
+        printData(ctx, nodeData, printX, printY, lineHeightOfData, maxWidthOfData);
         if (i !== 8) {
-          drawForwardArrow(ctx, 280 + 400 * ((i - 1) % 8), 525, 30 + 400 * (i % 8), 525);
-          drawBackwardArrow(ctx, 280 + 400 * ((i - 1) % 8), 545, 30 + 400 * (i % 8), 545);
+          // both arrows' "from" x point
+          const arrowFromX = (startingPointX + rectWidth) + (horizArrowLen + rectWidth) * (i - 9);
+          // y point of forward arrow (-->)
+          const fArrowY = canvasHeight - (startingPointY + rectHeight * 0.667);
+          // both arrows' "to" x point
+          const arrowToX = startingPointX + (rectWidth + horizArrowLen) * (i - 8);
+          // y point of backward arrow (<--)
+          const bArrowY = canvasHeight - (startingPointY + rectHeight * 0.333);
+
+          drawForwardArrow(ctx, arrowFromX, fArrowY, arrowToX, fArrowY);
+          drawBackwardArrow(ctx, arrowFromX, bArrowY, arrowToX, bArrowY);
         }
-        else {
-          drawForwardArrow(ctx, 140, 370, 140, 480);
-          drawBackwardArrow(ctx, 160, 370, 160, 480);
+        else { // vertical arrow
+          // vertical forward arrow's (^) x point
+          const vertFwArrowX = startingPointX + rectWidth * 0.333;
+          // vertical backward arrow's (v) x point
+          const vertBwArrowX = startingPointX + rectWidth * 0.667;
+          // vertical arrows' "from" y point
+          const vertArrowFromY = canvasHeight - (startingPointY + rectHeight + vertArrowLen);
+          // vertical arrow's "to" y point
+          const vertArrowToY = canvasHeight - (startingPointY + rectHeight);
+
+          drawForwardArrow(ctx, vertFwArrowX, vertArrowFromY, vertFwArrowX, vertArrowToY);
+          drawBackwardArrow(ctx, vertBwArrowX, vertArrowFromY, vertBwArrowX, vertArrowToY);
         }
         if (i === nodeLength - 1) { // if the last node, print "tail" text
           ctx.fillStyle = "red";
-          ctx.fillText("tail", 142 + 400 * (i % 8), 620);
+          const tailTextWidth = ctx.measureText('tail').width;
+          // x point of "tail" text
+          const tailTextX = startingPointX + (rectWidth - tailTextWidth) / 2 + (rectWidth + horizArrowLen) * (i - 8);
+          // y point of "tail" text
+          const tailTextY = (startingPointY * 1.65) + rectHeight * 3 + vertArrowLen * 2;
+
+          ctx.fillText("tail", tailTextX, tailTextY);
         }
       }
     });
