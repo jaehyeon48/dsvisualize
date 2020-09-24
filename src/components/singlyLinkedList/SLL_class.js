@@ -157,6 +157,7 @@ class SLinkedList {
       nodes.push(currentNode.data);
       currentNode = currentNode.next;
     }
+    return nodes;
   }
 }
 
