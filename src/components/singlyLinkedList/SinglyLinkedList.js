@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import ReturnToHome from '../ReturnToHome';
+import SllCanvas from './SllCanvas';
 import { SLL } from './SLL_class';
 import './singlyLinkedList.css';
 
@@ -180,13 +181,10 @@ const SinglyLinkedList = () => {
           </div>
         </div>
         <div className="node-items">
-          {/* <SllCanvas
-            nodes={nodeData}
-          /> */}
+          <SllCanvas nodes={nodeData} />
         </div>
       </div>
     </React.Fragment>
-
   );
 }
 
