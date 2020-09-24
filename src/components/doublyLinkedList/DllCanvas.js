@@ -27,8 +27,7 @@ const DllCanvas = ({
     let horizArrowLen; // horizontal arrow's length
     let vertArrowLen; // vertical arrow's length
     let fontSize;
-    const lineHeightOfData = 20; // line height of data inside of each nodes
-    const maxWidthOfData = 200; // maximum width of data inside of each nodes
+    let lineHeightOfData = 20; // line height of data inside of each nodes
     if (canvasWidth >= 1408) { // 1440px wide
       rectWidth = canvasWidth * 0.17;
       rectHeight = canvasHeight * 0.2;
@@ -36,6 +35,7 @@ const DllCanvas = ({
       startingPointY = canvasHeight * 0.05;
       horizArrowLen = canvasWidth * 0.1;
       vertArrowLen = canvasHeight * 0.15;
+      lineHeightOfData = 22;
       fontSize = 24;
     }
     else if (canvasWidth >= 992) { // 1024px wide
@@ -77,6 +77,7 @@ const DllCanvas = ({
     }
 
     const nodeLength = nodes.length;
+    const maxWidthOfData = rectWidth * 0.8;  // maximum width of data inside of each nodes
     nodes.forEach((nodeData, i) => {
       ctx.strokeStyle = '#003FFF';
       ctx.fillStyle = '#000';
