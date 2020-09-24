@@ -1,0 +1,125 @@
+.sll-header {
+  margin: 3rem;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.sll-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 1px solid #000;
+  border-radius: 0.8rem;
+  margin: 0 1rem;
+  padding: 1.5rem;
+}
+
+.sll-length {
+  width: 65%;
+  text-align: center;
+  margin-bottom: 1.3rem;
+  font-size: 1.5rem;
+}
+
+.sll-input {
+  width: 65%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+}
+
+.sll-input-field {
+  margin-left: 0.5rem;
+  outline: none;
+  background: none;
+  border: none;
+  border-radius: 0.8rem;
+  background-color: #fff;
+  font-size: 1.4rem;
+  padding: 0.5rem;
+}
+
+.sll-input-field:focus {
+  box-shadow: 0 0 1px 2px dodgerblue;
+}
+
+.sll-input-label {
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.sll-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 65%;
+}
+
+.btn-sll-append {
+  background-color: #923ada;
+  color: #fff;
+}
+
+.btn-sll-append:hover {
+  background-color: #5b1c8f;
+}
+
+.btn-sll-pop {
+  background-color: #30aee0;
+  color: #fff;
+}
+
+.btn-sll-pop:hover {
+  background-color: #2280a5;
+}
+
+.btn-sll-unshift {
+  background-color: #0fb6b0;
+  color: #fff;
+}
+
+.btn-sll-unshift:hover {
+  background-color: #0c5e5b;
+}
+
+.btn-sll-shift {
+  background-color: #c9eb41;
+}
+
+.btn-sll-shift:hover {
+  background-color: #8fa829;
+}
+
+.btn-sll-insertAt {
+  background-color: #eedf3e;
+}
+
+.btn-sll-insertAt:hover {
+  background-color: #c2b529;
+}
+
+.btn-sll-removeAt {
+  background-color: #f78b38;
+  color: #fff;
+}
+
+.btn-sll-removeAt:hover {
+  background-color: #c46f2e;
+}
+
+.btn-sll-clear {
+  background-color: #f34343;
+  color: #fff;
+}
+
+.btn-sll-clear:hover {
+  background-color: #bb3434;
+}
+
+.node-items {
+  position: relative;
+  display: flex;
+  margin: 5rem 1rem 3rem;
+  height: 700px;
+}
