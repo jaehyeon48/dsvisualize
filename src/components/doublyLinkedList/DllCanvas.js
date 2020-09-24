@@ -57,8 +57,17 @@ const DllCanvas = ({
       horizArrowLen = canvasWidth * 0.1264;
       vertArrowLen = canvasHeight * 0.1878;
       fontSize = 18;
-
     }
+    else if (canvasWidth >= 393) { // 425px wide
+      rectWidth = canvasWidth * 0.1799;
+      rectHeight = canvasHeight * 0.19;
+      startingPointX = canvasWidth * 0.01;
+      startingPointY = canvasHeight * 0.05;
+      horizArrowLen = canvasWidth * 0.0868;
+      vertArrowLen = canvasHeight * 0.165;
+      fontSize = 14;
+    }
+
     const nodeLength = nodes.length;
     nodes.forEach((nodeData, i) => {
       ctx.strokeStyle = '#003FFF';
