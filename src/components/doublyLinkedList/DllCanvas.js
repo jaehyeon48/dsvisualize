@@ -58,13 +58,22 @@ const DllCanvas = ({
       vertArrowLen = canvasHeight * 0.1878;
       fontSize = 18;
     }
-    else if (canvasWidth >= 393) { // 425px wide
+    else if (canvasWidth <= 393) { // 425px wide
       rectWidth = canvasWidth * 0.1799;
       rectHeight = canvasHeight * 0.19;
       startingPointX = canvasWidth * 0.01;
       startingPointY = canvasHeight * 0.05;
       horizArrowLen = canvasWidth * 0.0868;
       vertArrowLen = canvasHeight * 0.165;
+      fontSize = 16;
+    }
+    else { // narrow than 425px
+      rectWidth = canvasWidth * 0.1883;
+      rectHeight = canvasHeight * 0.1934;
+      startingPointX = canvasWidth * 0.01;
+      startingPointY = canvasHeight * 0.05;
+      horizArrowLen = canvasWidth * 0.0756;
+      vertArrowLen = canvasHeight * 0.1599;
       fontSize = 14;
     }
 
