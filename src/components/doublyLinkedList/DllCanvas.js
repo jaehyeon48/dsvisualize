@@ -5,7 +5,6 @@ const DllCanvas = ({
 }) => {
   const canvasRef = useRef(null);
 
-
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -247,6 +246,7 @@ const DllCanvas = ({
     let dx = fromX - toX;
     let dy = fromY - toY;
     let angle = Math.atan2(dy, dx);
+    ctx.strokeStyle = "#000";
     ctx.moveTo(toX, toY);
     ctx.lineTo(fromX, fromY);
     ctx.lineTo(fromX - headlen * Math.cos(angle - Math.PI / 6), fromY - headlen * Math.sin(angle - Math.PI / 6));
@@ -285,9 +285,7 @@ const DllCanvas = ({
   }
 
   return (
-    <canvas
-      ref={canvasRef}>
-    </canvas>
+    <canvas ref={canvasRef}></canvas>
   );
 }
 
