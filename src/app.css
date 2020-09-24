@@ -80,5 +80,6 @@ body {
   font-weight: 700;
 }
 
-@media only screen and (min-width: 1440px) {
+.footer-contact {
+  text-align: center;
 }
