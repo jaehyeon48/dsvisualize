@@ -45,7 +45,7 @@ const DoublyLinkedList = () => {
   }
 
   const handlePopDLL = () => {
-    if (nodeData.length === 0) {
+    if (nodeLength === 0) {
       return alert("The list is empty.");
     }
     DLL.pop();
@@ -61,7 +61,7 @@ const DoublyLinkedList = () => {
   }
 
   const handleShiftDLL = () => {
-    if (nodeData.length === 0) {
+    if (nodeLength === 0) {
       return alert("The list is empty.");
     }
     DLL.shift();
@@ -95,7 +95,7 @@ const DoublyLinkedList = () => {
   }
 
   const handleClearDLL = () => {
-    if (nodeData.length === 0) {
+    if (nodeLength === 0) {
       return alert("The list is empty.");
     }
     if (window.confirm('Would you clear the list?')) {
