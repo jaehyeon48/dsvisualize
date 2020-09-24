@@ -30,7 +30,8 @@
 }
 
 .sll-input-field {
-  margin-left: 0.5rem;
+  display: inline-block;
+  margin-left: 1rem;
   outline: none;
   background: none;
   border: none;
@@ -38,15 +39,24 @@
   background-color: #fff;
   font-size: 1.4rem;
   padding: 0.5rem;
+  box-shadow: 0 0 1px 2px #1e90ff;
 }
 
 .sll-input-field:focus {
-  box-shadow: 0 0 1px 2px dodgerblue;
+  box-shadow: 0 0 1px 3px #1a6bbd;
 }
 
 .sll-input-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: 400;
   font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.dll-input-label:nth-child(2) {
+  margin-left: 0.5rem;
 }
 
 .sll-buttons {
@@ -122,4 +132,52 @@
   display: flex;
   margin: 5rem 1rem 3rem;
   height: 700px;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+  .sll-length {
+    width: 82%;
+  }
+
+  .sll-input {
+    width: 82%;
+  }
+
+  .sll-buttons {
+    width: 82%;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  .sll-length {
+    width: 86%;
+  }
+
+  .sll-input {
+    width: 86%;
+  }
+
+  .sll-buttons {
+    width: 86%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .sll-length {
+    width: 90%;
+  }
+
+  .sll-input {
+    width: 90%;
+  }
+
+  .sll-buttons {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .sll-input-field {
+    width: 95%;
+  }
 }
