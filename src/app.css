@@ -21,6 +21,8 @@ body {
 #root {
   /* set min-height for footer */
   min-height: calc(100vh - 118px);
+  margin: 0 auto;
+  max-width: 1700px;
 }
 
 .btn {
