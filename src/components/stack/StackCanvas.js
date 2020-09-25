@@ -31,6 +31,30 @@ const StackCanvas = ({ stackItems }) => {
       containerHeight = canvasHeight * 0.95;
       // fontSize = 20;
     }
+    else if (canvasWidth >= 992) { // 1024px wide of display
+      startingPointX = canvasWidth * 0.25;
+      startingPointY = canvasHeight * 0.025;
+      containerWidth = canvasWidth * 0.5;
+      containerHeight = canvasHeight * 0.95;
+    }
+    else if (canvasWidth >= 736) { // 768px wide of display
+      startingPointX = canvasWidth * 0.20;
+      startingPointY = canvasHeight * 0.025;
+      containerWidth = canvasWidth * 0.6;
+      containerHeight = canvasHeight * 0.95;
+    }
+    else if (canvasWidth >= 393) { // 425px wide of display
+      startingPointX = canvasWidth * 0.17;
+      startingPointY = canvasHeight * 0.025;
+      containerWidth = canvasWidth * 0.66;
+      containerHeight = canvasHeight * 0.95;
+    }
+    else { // narrower than 425px wide
+      startingPointX = canvasWidth * 0.13;
+      startingPointY = canvasHeight * 0.025;
+      containerWidth = canvasWidth * 0.74;
+      containerHeight = canvasHeight * 0.95;
+    }
 
     stackItems.forEach((stackData, i) => {
       ctx.textAlign = 'start';
