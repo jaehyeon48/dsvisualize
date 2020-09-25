@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import ReturnToHome from '../ReturnToHome';
+import StackCanvas from './StackCanvas';
 import { STACK } from './Stack_class';
 import './stack.css';
 
@@ -118,6 +119,7 @@ const Stack = () => {
           </div>
         </div>
         <div className="stack-items">
+          <StackCanvas stackItems={stackData} />
         </div>
       </div>
     </React.Fragment>
