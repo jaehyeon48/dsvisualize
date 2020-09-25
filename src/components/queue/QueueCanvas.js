@@ -22,38 +22,38 @@ const QueueCanvas = ({ queueItems }) => {
     let startingPointY;
     let containerWidth;
     let containerHeight;
-    let fontSize = 14;
+    let fontSize = 16;
 
     if (canvasWidth >= 1408) { // 1440px wide of display
-      startingPointX = canvasWidth * 0.15;
-      startingPointY = canvasHeight * 0.25;
-      containerWidth = canvasWidth * 0.7;
+      startingPointX = canvasWidth * 0.1;
+      startingPointY = canvasHeight * 0.1;
+      containerWidth = canvasWidth * 0.8;
       containerHeight = canvasHeight * 0.5;
       // fontSize = 20;
     }
     else if (canvasWidth >= 992) { // 1024px wide of display
-      startingPointX = canvasWidth * 0.15;
-      startingPointY = canvasHeight * 0.25;
-      containerWidth = canvasWidth * 0.7;
+      startingPointX = canvasWidth * 0.08;
+      startingPointY = canvasHeight * 0.1;
+      containerWidth = canvasWidth * 0.84;
       containerHeight = canvasHeight * 0.5;
     }
     else if (canvasWidth >= 736) { // 768px wide of display
-      startingPointX = canvasWidth * 0.20;
-      startingPointY = canvasHeight * 0.025;
-      containerWidth = canvasWidth * 0.6;
-      containerHeight = canvasHeight * 0.95;
+      startingPointX = canvasWidth * 0.06;
+      startingPointY = canvasHeight * 0.1;
+      containerWidth = canvasWidth * 0.88;
+      containerHeight = canvasHeight * 0.5;
     }
     else if (canvasWidth >= 393) { // 425px wide of display
-      startingPointX = canvasWidth * 0.17;
-      startingPointY = canvasHeight * 0.025;
-      containerWidth = canvasWidth * 0.66;
-      containerHeight = canvasHeight * 0.95;
+      startingPointX = canvasWidth * 0.03;
+      startingPointY = canvasHeight * 0.1;
+      containerWidth = canvasWidth * 0.94;
+      containerHeight = canvasHeight * 0.4;
     }
     else { // narrower than 425px wide
-      startingPointX = canvasWidth * 0.13;
-      startingPointY = canvasHeight * 0.025;
-      containerWidth = canvasWidth * 0.74;
-      containerHeight = canvasHeight * 0.95;
+      startingPointX = canvasWidth * 0.02;
+      startingPointY = canvasHeight * 0.1;
+      containerWidth = canvasWidth * 0.96;
+      containerHeight = canvasHeight * 0.4;
     }
 
     queueItems.forEach((stackData, i) => {
@@ -64,19 +64,19 @@ const QueueCanvas = ({ queueItems }) => {
         drawQueueContainer(ctx, startingPointX, startingPointY, containerWidth, containerHeight);
       }
 
-      // each stack item's size property
-      const stackItemGap = containerHeight * 0.01;
-      const stackItemWidth = containerWidth * 0.88;
-      const stackItemHeight = containerHeight * 0.09;
+      // each queue item's size property
+      const queueItemGap = containerWidth * 0.01;
+      const queueItemWidth = containerWidth * 0.091;
+      const queueItemHeight = containerHeight * 0.86;
 
-      // "staring x, y point of each stack item"
-      const stackItemStartX = startingPointX + containerWidth * 0.06;
-      const stackItemStartY = canvasHeight - startingPointY - (stackItemGap + stackItemHeight) * (i + 1);
-      // drawQueueItem(ctx, stackItemWidth, stackItemHeight, stackItemStartX, stackItemStartY);
+      // "staring x, y point of each queue item"
+      const queueItemStartX = startingPointX + (queueItemGap + queueItemWidth) * i;
+      const queueItemStartY = startingPointY + containerHeight * 0.07;
+      drawQueueItem(ctx, queueItemWidth, queueItemHeight, queueItemStartX, queueItemStartY);
 
-      const printX = startingPointX + containerWidth * 0.1;
-      const printY = canvasHeight - startingPointY - (stackItemGap + stackItemHeight * 0.7) - (stackItemGap + stackItemHeight) * i;
-      const maxWidthOfData = stackItemWidth * 0.9;  // maximum width of data inside of each nodes
+      const printX = startingPointX + queueItemWidth * 0.06 + (queueItemGap + queueItemWidth) * i;
+      const printY = startingPointY + containerHeight * 0.15;
+      const maxWidthOfData = queueItemWidth * 0.9;  // maximum width of data inside of each nodes
 
       printData(ctx, stackData, printX, printY, 18, maxWidthOfData);
     });
@@ -95,9 +95,9 @@ const QueueCanvas = ({ queueItems }) => {
     ctx.stroke();
   }
 
-  const drawQueueItem = (ctx, stackItemWidth, stackItemHeight, stackItemStartX, stackItemStartY) => {
+  const drawQueueItem = (ctx, queueItemWidth, queueItemHeight, queueItemStartX, queueItemStartY) => {
     ctx.fillStyle = "#F18677";
-    ctx.fillRect(stackItemStartX, stackItemStartY, stackItemWidth, stackItemHeight);
+    ctx.fillRect(queueItemStartX, queueItemStartY, queueItemWidth, queueItemHeight);
   }
 
   function printData(context, text, x, y, lineHeight, fitWidth = 0, lineNum = 0) {
@@ -113,7 +113,7 @@ const QueueCanvas = ({ queueItems }) => {
     for (let i = 1; i <= text.length; i++) {
       let str = text.substr(0, i);
       if (context.measureText(str).width > fitWidth) {
-        if (lineNum < 3) { // truncate data from line number 6
+        if (lineNum < 15) { // truncate data from line number 15
           context.fillText(text.substr(0, i - 1), x, y);
         }
         else {
@@ -123,7 +123,7 @@ const QueueCanvas = ({ queueItems }) => {
         return;
       }
     }
-    if (lineNum < 3) { // truncate data from line number 6
+    if (lineNum < 15) { // truncate data from line number 15
       context.fillText(text, x, y);
     }
     else {
