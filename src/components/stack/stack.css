@@ -97,3 +97,58 @@
 .btn-stack-clear:hover {
   background-color: #bb3434;
 }
+
+.stack-items {
+  position: relative;
+  display: flex;
+  margin: 5rem 1rem 3rem;
+  height: 700px;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+  .stack-size {
+    width: 82%;
+  }
+
+  .stack-input {
+    width: 82%;
+  }
+
+  .stack-buttons {
+    width: 82%;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  .stack-size {
+    width: 86%;
+  }
+
+  .stack-input {
+    width: 86%;
+  }
+
+  .stack-buttons {
+    width: 86%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .stack-size {
+    width: 90%;
+  }
+
+  .stack-input {
+    width: 90%;
+  }
+
+  .stack-buttons {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .stack-input-field {
+    width: 95%;
+  }
+}
