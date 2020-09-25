@@ -76,23 +76,26 @@ class Queue {
     const nodes = [];
     let currentNode = this.front;
 
-    do {
-      nodes.push(currentNode.data);
-      currentNode = currentNode.next;
+
+    if (currentNode) { // if the queue's size is not 0
+      do {
+        nodes.push(currentNode.data);
+        currentNode = currentNode.next;
+      }
+      while (currentNode !== this.front);
     }
-    while (currentNode !== this.front);
     return nodes;
   }
 }
 
-const QUEUE = new Queue();
+export const QUEUE = new Queue();
 
-QUEUE.enqueue(1);
-QUEUE.enqueue(2);
-QUEUE.enqueue(3);
+// QUEUE.enqueue(1);
+// QUEUE.enqueue(2);
+// QUEUE.enqueue(3);
 
-QUEUE.dequeue();
+// QUEUE.dequeue();
 
-QUEUE.enqueue('a');
+// QUEUE.enqueue('a');
 
-console.log(QUEUE.getAllNodesForRender());
+// console.log(QUEUE.getAllNodesForRender());
