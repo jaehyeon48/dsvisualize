@@ -56,7 +56,7 @@ const SllCanvas = ({
       vertArrowLen = canvasHeight * 0.1878;
       fontSize = 18;
     }
-    else if (canvasWidth <= 393) { // 425px wide
+    else if (canvasWidth >= 393) { // 425px wide
       rectWidth = canvasWidth * 0.1799;
       rectHeight = canvasHeight * 0.19;
       startingPointX = canvasWidth * 0.01;
