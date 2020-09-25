@@ -5,6 +5,7 @@ import Main from './components/Main';
 import SinglyLinkedList from './components/singlyLinkedList/SinglyLinkedList';
 import DoublyLinkedList from './components/doublyLinkedList/DoublyLinkedList';
 import Stack from './components/stack/Stack';
+import Queue from './components/queue/Queue';
 import './app.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/sll" component={SinglyLinkedList} exact={true} />
         <Route path="/dll" component={DoublyLinkedList} exact={true} />
         <Route path="/stack" component={Stack} exact={true} />
+        <Route path="/queue" component={Queue} exact={true} />
       </Switch>
     </Router>
   );
