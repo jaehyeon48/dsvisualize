@@ -1,0 +1,99 @@
+.stack-header {
+  margin: 3rem;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.stack-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 1px solid #000;
+  border-radius: 0.8rem;
+  margin: 0 1rem;
+  padding: 1.5rem;
+}
+
+.stack-size {
+  width: 65%;
+  text-align: center;
+  margin-bottom: 1.3rem;
+  font-size: 1.5rem;
+}
+
+.stack-input {
+  width: 65%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+}
+
+.stack-input-field {
+  display: inline-block;
+  margin-left: 1rem;
+  outline: none;
+  background: none;
+  border: none;
+  border-radius: 0.8rem;
+  background-color: #fff;
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  box-shadow: 0 0 1px 2px #1e90ff;
+}
+
+.stack-input-field:focus {
+  box-shadow: 0 0 1px 3px #1a6bbd;
+}
+
+.stack-input-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.stack-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 65%;
+}
+
+.btn-stack-push {
+  background-color: #923ada;
+  color: #fff;
+}
+
+.btn-stack-push:hover {
+  background-color: #5b1c8f;
+}
+
+.btn-stack-pop {
+  background-color: #30aee0;
+  color: #fff;
+}
+
+.btn-stack-pop:hover {
+  background-color: #2280a5;
+}
+
+.btn-stack-peek {
+  background-color: #46ec6f;
+  color: #fff;
+}
+
+.btn-stack-peek:hover {
+  background-color: #3aca5e;
+}
+
+.btn-stack-clear {
+  background-color: #f34343;
+  color: #fff;
+}
+
+.btn-stack-clear:hover {
+  background-color: #bb3434;
+}
