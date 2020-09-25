@@ -98,7 +98,7 @@ const DoublyLinkedList = () => {
     if (nodeLength === 0) {
       return alert("The list is empty.");
     }
-    if (window.confirm('Would you clear the list?')) {
+    if (window.confirm('Would you like to clear the list?')) {
       DLL.clear();
       handleSetNodeData();
     }
