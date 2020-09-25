@@ -47,8 +47,6 @@ const Stack = () => {
     handleSetStackData();
   }
 
-  const handlePeekStack = () => { }
-
   const handleClearStack = () => {
     if (stackSize === 0) {
       return alert("The stack is empty.");
@@ -100,14 +98,6 @@ const Stack = () => {
               onClick={handlePopStack}
             >
               POP
-            </button>
-            <button
-              className="btn btn-stack-peek"
-              type="button"
-              onClick={handlePeekStack}
-              disabled={isMaxSize}
-            >
-              PEEK
             </button>
             <button
               className="btn btn-stack-clear"
