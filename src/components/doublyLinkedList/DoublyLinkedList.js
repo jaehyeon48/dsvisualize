@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 
 import ReturnToHome from '../ReturnToHome';
 import DllCanvas from './DllCanvas';
@@ -6,11 +8,17 @@ import { DLL } from './DLL_class';
 import './doublyLinkedList.css';
 
 const DoublyLinkedList = () => {
+  let location = useLocation();
   const [nodeData, setNodeData] = useState([]);
   const [nodeLength, setNodeLength] = useState(0);
   const [isMaxLength, setIsMaxLength] = useState(false);
   const [inputData, setInputData] = useState('');
   const [inputIndex, setInputIndex] = useState('');
+
+  useEffect(() => { // clear list when a user changes route
+    DLL.clear();
+    handleSetNodeData();
+  }, [location]);
 
   useEffect(() => {
     if (nodeLength >= 12) {

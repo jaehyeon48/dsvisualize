@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import ReturnToHome from '../ReturnToHome';
+import QueueCanvas from './QueueCanvas';
 import { QUEUE } from './QUEUE_class';
 import './queue.css';
 
 const Queue = () => {
+  let location = useLocation();
+
   const [queueData, setStackData] = useState([]);
   const [queueSize, setQueueSize] = useState(0);
   const [isMaxSize, setIsMaxSize] = useState(false);
   const [inputData, setInputData] = useState('');
+
+  useEffect(() => { // clear queue when a user changes route
+    QUEUE.clear();
+    handleSetQueueData();
+  }, [location]);
 
   useEffect(() => {
     if (queueSize >= 10) {
@@ -107,7 +116,7 @@ const Queue = () => {
           </div>
         </div>
         <div className="queue-items">
-          {/* <StackCanvas stackItems={queueData} /> */}
+          <QueueCanvas queueItems={queueData} />
         </div>
       </div>
     </React.Fragment>

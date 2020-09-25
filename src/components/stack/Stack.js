@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import ReturnToHome from '../ReturnToHome';
 import StackCanvas from './StackCanvas';
@@ -6,10 +7,16 @@ import { STACK } from './Stack_class';
 import './stack.css';
 
 const Stack = () => {
+  let location = useLocation();
   const [stackData, setStackData] = useState([]);
   const [stackSize, setStackSize] = useState(0);
   const [isMaxSize, setIsMaxSize] = useState(false);
   const [inputData, setInputData] = useState('');
+
+  useEffect(() => { // clear stack when a user changes route
+    STACK.clear();
+    handleSetStackData();
+  }, [location]);
 
   useEffect(() => {
     if (stackSize >= 10) {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import ReturnToHome from '../ReturnToHome';
 import SllCanvas from './SllCanvas';
@@ -6,11 +7,17 @@ import { SLL } from './SLL_class';
 import './singlyLinkedList.css';
 
 const SinglyLinkedList = () => {
+  let location = useLocation();
   const [nodeData, setNodeData] = useState([]);
   const [nodeLength, setNodeLength] = useState(0);
   const [isMaxLength, setIsMaxLength] = useState(false);
   const [inputData, setInputData] = useState('');
   const [inputIndex, setInputIndex] = useState('');
+
+  useEffect(() => { // clear list when a user changes route
+    SLL.clear();
+    handleSetNodeData();
+  }, [location]);
 
   useEffect(() => {
     if (nodeLength >= 12) {
