@@ -29,7 +29,6 @@ const QueueCanvas = ({ queueItems }) => {
       startingPointY = canvasHeight * 0.1;
       containerWidth = canvasWidth * 0.8;
       containerHeight = canvasHeight * 0.5;
-      // fontSize = 20;
     }
     else if (canvasWidth >= 992) { // 1024px wide of display
       startingPointX = canvasWidth * 0.08;
@@ -47,22 +46,19 @@ const QueueCanvas = ({ queueItems }) => {
       startingPointX = canvasWidth * 0.03;
       startingPointY = canvasHeight * 0.1;
       containerWidth = canvasWidth * 0.94;
-      containerHeight = canvasHeight * 0.4;
+      containerHeight = canvasHeight * 0.5;
     }
     else { // narrower than 425px wide
       startingPointX = canvasWidth * 0.02;
       startingPointY = canvasHeight * 0.1;
       containerWidth = canvasWidth * 0.96;
-      containerHeight = canvasHeight * 0.4;
+      containerHeight = canvasHeight * 0.5;
     }
 
+    const queueSize = queueItems.length - 1;
     queueItems.forEach((stackData, i) => {
       ctx.textAlign = 'start';
       ctx.font = `normal ${fontSize}px sans-serif`;
-
-      if (i === 0) { // draw container only if it's first time to render
-        drawQueueContainer(ctx, startingPointX, startingPointY, containerWidth, containerHeight);
-      }
 
       // each queue item's size property
       const queueItemGap = containerWidth * 0.01;
@@ -72,13 +68,25 @@ const QueueCanvas = ({ queueItems }) => {
       // "staring x, y point of each queue item"
       const queueItemStartX = startingPointX + (queueItemGap + queueItemWidth) * i;
       const queueItemStartY = startingPointY + containerHeight * 0.07;
+
+      if (i === 0) { // draw container only if it's first time to render
+        drawQueueContainer(ctx, startingPointX, startingPointY, containerWidth, containerHeight);
+        // draw 'front' text above the container
+        drawFrontText(ctx, startingPointX, startingPointY - 10, queueItemWidth);
+      }
+
       drawQueueItem(ctx, queueItemWidth, queueItemHeight, queueItemStartX, queueItemStartY);
 
-      const printX = startingPointX + queueItemWidth * 0.06 + (queueItemGap + queueItemWidth) * i;
+      const printX = startingPointX + queueItemWidth * 0.07 + (queueItemGap + queueItemWidth) * i;
       const printY = startingPointY + containerHeight * 0.15;
       const maxWidthOfData = queueItemWidth * 0.9;  // maximum width of data inside of each nodes
 
       printData(ctx, stackData, printX, printY, 18, maxWidthOfData);
+
+      if (i === queueSize) {
+        // draw 'rear' text below the container
+        drawRearText(ctx, startingPointX, startingPointY, queueItemWidth, queueItemGap, containerHeight, i);
+      }
     });
   }
 
@@ -129,6 +137,25 @@ const QueueCanvas = ({ queueItems }) => {
     else {
       context.fillText('', x, y);
     }
+  }
+
+  const drawFrontText = (ctx, startX, startY, itemWidth) => {
+    ctx.fillStyle = 'red';
+
+    const frontTextWidth = ctx.measureText('front').width;
+    const frontX = startX + (itemWidth - frontTextWidth) / 2;
+    const frontY = startY;
+    ctx.fillText('Front', frontX, frontY);
+  }
+
+  const drawRearText = (ctx, startX, startY, itemWidth, itemGap, containerHeight, index) => {
+    ctx.fillStyle = 'red';
+
+    const rearTextWidth = ctx.measureText('Rear').width;
+    const rearX = startX + (itemWidth - rearTextWidth) / 2 + (itemGap + itemWidth) * index;
+    const rearY = startY + containerHeight + 20;
+
+    ctx.fillText('Rear', rearX, rearY);
   }
 
   return (
