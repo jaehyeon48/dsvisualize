@@ -99,10 +99,8 @@ class Bst {
       // make its left child a root
       if (currentNode === this.root) {
         this.root = currentNode.left;
-        return true;
       }
-
-      if (currentNode.parent.left === currentNode) {
+      else if (currentNode.parent.left === currentNode) {
         currentNode.parent.left = currentNode.left;
       }
       else {
@@ -118,10 +116,8 @@ class Bst {
       // make its right child a root
       if (currentNode === this.root) {
         this.root = currentNode.right;
-        return true;
       }
-
-      if (currentNode.parent.left === currentNode) {
+      else if (currentNode.parent.left === currentNode) {
         currentNode.parent.left = currentNode.right;
       }
       else {
@@ -245,18 +241,19 @@ class Bst {
   getAllNodesForRender() { }
 }
 
+// const BST = new Bst();
 export const BST = new Bst();
 
-BST.insert(10);
-BST.insert(4);
-BST.insert(16);
-BST.insert(13);
-BST.insert(30);
-BST.insert(20);
-BST.insert(42);
-BST.insert(25);
-BST.insert(22);
-BST.insert(28);
+// BST.insert(10);
+// BST.insert(4);
+// BST.insert(16);
+// BST.insert(13);
+// BST.insert(30);
+// BST.insert(20);
+// BST.insert(42);
+// BST.insert(25);
+// BST.insert(22);
+// BST.insert(28);
 
 
 // BST.preOrder(root);
@@ -268,3 +265,11 @@ BST.insert(28);
 
 // const root = BST.getRoot();
 // BST.inOrder(root);
+
+// BST.insert(1);
+// BST.insert(2);
+// BST.insert(3);
+
+// BST.remove(1);
+
+// BST.inOrder(BST.getRoot());
