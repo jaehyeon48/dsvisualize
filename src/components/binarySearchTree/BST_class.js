@@ -266,5 +266,5 @@ BST.insert(28);
 
 // BST.remove(16);
 
-const root = BST.getRoot();
-BST.inOrder(root);
+// const root = BST.getRoot();
+// BST.inOrder(root);
