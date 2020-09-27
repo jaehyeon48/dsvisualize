@@ -243,7 +243,7 @@ class Bst {
   }
 }
 
-const export BST = new Bst();
+export const BST = new Bst();
 
 BST.insert(10);
 BST.insert(4);
