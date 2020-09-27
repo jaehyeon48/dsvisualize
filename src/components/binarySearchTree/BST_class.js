@@ -241,6 +241,8 @@ class Bst {
     this.size = 0;
     this.root = null;
   }
+
+  getAllNodesForRender() { }
 }
 
 export const BST = new Bst();
