@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import ReturnToHome from '../ReturnToHome';
+import BstCanvas from './BstCanvas';
 import { BST } from './BST_class';
 import './bst.css';
 
@@ -18,8 +19,12 @@ const Bst = () => {
     handleSetBstData();
   }, [location]);
 
+  // useEffect(() => {
+  //   console.log(bstData);
+  // }, [bstData]);
+
   useEffect(() => {
-    if (bstSize >= 10) {
+    if (bstSize >= 31) {
       setIsMaxSize(true);
     }
     else {
@@ -32,7 +37,9 @@ const Bst = () => {
   }
 
   const handleSetBstData = () => {
-    setBstData(BST.getAllNodesForRender());
+    const dataArray = [];
+    BST.getAllNodesForRender(BST.getRoot(), dataArray);
+    setBstData(dataArray.sort(sortByData).sort(sortByDepth));
     setBstSize(BST.getSize());
     setInputData('');
   }
@@ -41,7 +48,7 @@ const Bst = () => {
     if (inputData.trim() === '') {
       return alert('Please input valid data.');
     }
-    BST.insert(inputData);
+    BST.insert(parseInt(inputData));
     handleSetBstData();
   }
 
@@ -52,7 +59,7 @@ const Bst = () => {
     if (inputData.trim() === '') {
       return alert('Please input valid data.');
     }
-    BST.remove(inputData);
+    BST.remove(parseInt(inputData));
     handleSetBstData();
   }
 
@@ -79,7 +86,7 @@ const Bst = () => {
         <h1 className="bst-header">Binary Search Tree</h1>
         <div className="bst-actions">
           <div className="bst-size">
-            Size: <span style={maxSizeColor()}>{bstSize}</span> / 10
+            Size: <span style={maxSizeColor()}>{bstSize}</span> / 31
           </div>
           <div className="bst-input">
             <label className="bst-input-label">
@@ -117,12 +124,21 @@ const Bst = () => {
             </button>
           </div>
         </div>
-        {/* <div className="bst-items">
+        <div className="bst-items">
           <BstCanvas bstItems={bstData} />
-        </div> */}
+        </div>
       </div>
     </React.Fragment>
   );
 }
 
 export default Bst;
+
+
+function sortByData(a, b) {
+  return a['data'] - b['data'];
+}
+
+function sortByDepth(a, b) {
+  return a['depth'] - b['depth'];
+}

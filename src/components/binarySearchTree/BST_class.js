@@ -238,7 +238,18 @@ class Bst {
     this.root = null;
   }
 
-  getAllNodesForRender() { }
+  getAllNodesForRender(node, dataArr, depth = 0, pos = 0) {
+    if (!node) return;
+    /* pos (position):
+     *    
+     *          n
+     *      2n    2n+1
+     * 
+     */
+    dataArr.push({ data: node.data, depth, pos });
+    this.getAllNodesForRender(node.left, dataArr, depth + 1, 2 * pos);
+    this.getAllNodesForRender(node.right, dataArr, depth + 1, 2 * pos + 1);
+  }
 }
 
 // const BST = new Bst();
