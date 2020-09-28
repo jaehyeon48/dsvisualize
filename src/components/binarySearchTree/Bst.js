@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import ReturnToHome from '../ReturnToHome';
+import InfoIcon from '../InfoIcon';
+import BstMethodsInfo from './BstMethodsInfo';
 import BstCanvas from './BstCanvas';
 import { BST } from './BST_class';
 import './bst.css';
@@ -15,15 +17,12 @@ const Bst = () => {
   const [isMaxSize, setIsMaxSize] = useState(false);
   const [isMaxDepth, setIsMaxDepth] = useState(false);
   const [inputData, setInputData] = useState('');
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   useEffect(() => { // clear tree when a user changes route
     BST.clear();
     handleSetBstData();
   }, [location]);
-
-  // useEffect(() => {
-  //   console.log(bstData);
-  // }, [bstData]);
 
   useEffect(() => {
     if (bstSize >= 31) {
@@ -113,9 +112,21 @@ const Bst = () => {
     }
   }
 
+  const openBstMethodsInfo = () => {
+    setIsInfoOpen(true);
+  }
+
+  const closeBstMethodsInfo = () => {
+    setIsInfoOpen(false);
+  }
+
   return (
     <React.Fragment>
       <ReturnToHome />
+      <InfoIcon
+        onClickFunc={openBstMethodsInfo}
+      />
+      {isInfoOpen && <BstMethodsInfo closeInfoFunc={closeBstMethodsInfo} />}
       <div className="bst-container">
         <h1 className="bst-header">Binary Search Tree</h1>
         <div className="bst-actions">
