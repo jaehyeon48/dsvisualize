@@ -11,7 +11,9 @@ const Bst = () => {
 
   const [bstData, setBstData] = useState([]);
   const [bstSize, setBstSize] = useState(0);
+  const [bstDepth, setBstDepth] = useState(0);
   const [isMaxSize, setIsMaxSize] = useState(false);
+  const [isMaxDepth, setIsMaxDepth] = useState(false);
   const [inputData, setInputData] = useState('');
 
   useEffect(() => { // clear tree when a user changes route
@@ -32,6 +34,15 @@ const Bst = () => {
     }
   }, [bstSize]);
 
+  useEffect(() => {
+    if (bstDepth >= 4) {
+      setIsMaxDepth(true);
+    }
+    else {
+      setIsMaxDepth(false);
+    }
+  }, [bstDepth]);
+
   const handleChangeInputData = (e) => {
     setInputData(e.target.value);
   }
@@ -41,12 +52,29 @@ const Bst = () => {
     BST.getAllNodesForRender(BST.getRoot(), dataArray);
     setBstData(dataArray.sort(sortByData).sort(sortByDepth));
     setBstSize(BST.getSize());
+    setBstDepth(BST.getMaxDepth(BST.getRoot()));
     setInputData('');
   }
 
   const handleInsertData = () => {
     if (inputData.trim() === '') {
       return alert('Please input valid data.');
+    }
+    if (isMaxDepth && !isMaxSize) {
+      // test if the max depth after inserting a new data is greater
+      // than depth limit
+      BST.insert(parseInt(inputData));
+      const maxDepth = BST.getMaxDepth(BST.getRoot());
+      BST.remove(parseInt(inputData));
+
+      if (maxDepth > 4) {
+        return alert('Out of the maximum depth. Please try another data.');
+      }
+      else {
+        BST.insert(parseInt(inputData));
+        handleSetBstData();
+        return;
+      }
     }
     BST.insert(parseInt(inputData));
     handleSetBstData();
@@ -73,8 +101,14 @@ const Bst = () => {
     }
   }
 
-  const maxSizeColor = () => {
+  const colorMaxSize = () => {
     if (isMaxSize) {
+      return { color: 'red' };
+    }
+  }
+
+  const colorMaxDepth = () => {
+    if (isMaxDepth) {
       return { color: 'red' };
     }
   }
@@ -86,7 +120,10 @@ const Bst = () => {
         <h1 className="bst-header">Binary Search Tree</h1>
         <div className="bst-actions">
           <div className="bst-size">
-            Size: <span style={maxSizeColor()}>{bstSize}</span> / 31
+            Size: <span style={colorMaxSize()}>{bstSize}</span> / 31
+          </div>
+          <div className="bst-size">
+            Depth: <span style={colorMaxDepth()}>{bstDepth}</span> / 4
           </div>
           <div className="bst-input">
             <label className="bst-input-label">

@@ -238,6 +238,22 @@ class Bst {
     this.root = null;
   }
 
+  getMaxDepth(node) {
+    if (!node) return 0;
+
+    let leftDepth = this.getMaxDepth(node.left);
+    let rightDepth = this.getMaxDepth(node.right);
+
+    if (node === this.root) {
+      if (leftDepth > rightDepth) return leftDepth;
+      else return rightDepth;
+    }
+    else {
+      if (leftDepth > rightDepth) return leftDepth + 1;
+      else return rightDepth + 1;
+    }
+  }
+
   getAllNodesForRender(node, dataArr, depth = 0, pos = 0) {
     if (!node) return;
     /* pos (position):
