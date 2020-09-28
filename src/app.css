@@ -83,3 +83,33 @@ body {
 .footer-contact {
   text-align: center;
 }
+
+/* info icon */
+.btn-info-icon {
+  background: none;
+  border: none;
+  outline: none;
+  display: block;
+  margin: 1rem auto;
+}
+
+.fa-info-circle {
+  display: block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.fa-info-circle:hover {
+  color: #cecece;
+}
+
+.fa-times {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.fa-times:hover {
+  color: #cecece;
+}
