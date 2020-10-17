@@ -9,7 +9,7 @@ import './queue.css';
 const Queue = () => {
   let location = useLocation();
 
-  const [queueData, setStackData] = useState([]);
+  const [queueData, setQueueData] = useState([]);
   const [queueSize, setQueueSize] = useState(0);
   const [isMaxSize, setIsMaxSize] = useState(false);
   const [inputData, setInputData] = useState('');
@@ -33,7 +33,7 @@ const Queue = () => {
   }
 
   const handleSetQueueData = () => {
-    setStackData(QUEUE.getAllNodesForRender());
+    setQueueData(QUEUE.getAllNodesForRender());
     setQueueSize(QUEUE.getSize());
     setInputData('');
   }
