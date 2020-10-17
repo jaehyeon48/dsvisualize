@@ -22,6 +22,10 @@ const Main = () => {
     history.push('/queue');
   }
 
+  const redirectToDeque = () => {
+    history.push('/deque');
+  }
+
   const redirectToBST = () => {
     history.push('/bst');
   }
@@ -48,6 +52,10 @@ const Main = () => {
           className="data-structures-item queue"
           onClick={redirectToQueue}
         >Queue</div>
+        <div
+          className="data-structures-item deque"
+          onClick={redirectToDeque}
+        >Deque</div>
         <div
           className="data-structures-item bst"
           onClick={redirectToBST}

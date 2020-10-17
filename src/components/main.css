@@ -62,6 +62,15 @@
   background-color: #219292;
 }
 
+.deque {
+  background-color: #62d183;
+  color: #000;
+}
+
+.deque:hover {
+  background-color: #3d9758;
+}
+
 .bst {
   background-color: #ff9f40;
 }

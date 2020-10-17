@@ -6,6 +6,7 @@ import SinglyLinkedList from './components/singlyLinkedList/SinglyLinkedList';
 import DoublyLinkedList from './components/doublyLinkedList/DoublyLinkedList';
 import Stack from './components/stack/Stack';
 import Queue from './components/queue/Queue';
+import Deque from './components/deque/Deque';
 import Bst from './components/binarySearchTree/Bst';
 import './app.css';
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/dll" component={DoublyLinkedList} exact={true} />
         <Route path="/stack" component={Stack} exact={true} />
         <Route path="/queue" component={Queue} exact={true} />
+        <Route path="/deque" component={Deque} exact={true} />
         <Route path="/bst" component={Bst} exact={true} />
       </Switch>
     </Router>
