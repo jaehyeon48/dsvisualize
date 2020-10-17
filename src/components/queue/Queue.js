@@ -54,7 +54,7 @@ const Queue = () => {
     handleSetQueueData();
   }
 
-  const handleClearStack = () => {
+  const handleClearQueue = () => {
     if (queueSize === 0) {
       return alert("The queue is empty.");
     }
@@ -109,7 +109,7 @@ const Queue = () => {
             <button
               className="btn btn-queue-clear"
               type="button"
-              onClick={handleClearStack}
+              onClick={handleClearQueue}
             >
               CLEAR
             </button>
