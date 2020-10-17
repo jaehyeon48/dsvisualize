@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import ReturnToHome from '../ReturnToHome';
-// import QueueCanvas from './QueueCanvas';
+import DequeCanvas from './DequeCanvas';
 import { DEQUE } from './DEQUE-class';
 import './deque.css';
 
@@ -147,7 +147,7 @@ const Deque = () => {
           </div>
         </div>
         <div className="deque-items">
-          {/* <QueueCanvas queueItems={dequeData} /> */}
+          <DequeCanvas dequeItems={dequeData} />
         </div>
       </div>
     </React.Fragment>
