@@ -14,7 +14,6 @@ const DequeCanvas = ({ dequeItems }) => {
     canvas.height = canvasHeight;
 
     draw(ctx, canvasWidth, canvasHeight);
-
   }, [dequeItems]);
 
   const draw = (ctx, canvasWidth, canvasHeight) => {
@@ -56,6 +55,7 @@ const DequeCanvas = ({ dequeItems }) => {
     }
 
     const queueSize = dequeItems.length - 1;
+
     dequeItems.forEach((dequeData, i) => {
       ctx.textAlign = 'start';
       ctx.font = `normal ${fontSize}px sans-serif`;
@@ -69,7 +69,23 @@ const DequeCanvas = ({ dequeItems }) => {
       const dequeItemStartX = startingPointX + (dequeItemGap + dequeItemWidth) * i;
       const dequeItemStartY = startingPointY + containerHeight * 0.07;
 
+      const leftForwardArrowX = 30;
+      const rightForwardArrowX = startingPointX + containerWidth + 30;
+      const forwardArrowY = startingPointY + containerHeight / 3;
+      const backwardArrowY = startingPointY + containerHeight / 3 * 2;
+
       if (i === 0) { // draw container only if it's first time to render
+        if (canvasWidth >= 1408) {
+          // forward arrow (->) at the left side
+          drawForwardArrow(ctx, leftForwardArrowX, forwardArrowY, leftForwardArrowX + 60, forwardArrowY);
+          // forward arrow (->) at the right side
+          drawForwardArrow(ctx, rightForwardArrowX, forwardArrowY, rightForwardArrowX + 60, forwardArrowY)
+          // backward arrow (<-) at the left side
+          drawBackwardArrow(ctx, leftForwardArrowX, backwardArrowY, leftForwardArrowX + 60, backwardArrowY);
+          // backward arrow (<-) at the right side
+          drawBackwardArrow(ctx, rightForwardArrowX, backwardArrowY, rightForwardArrowX + 60, backwardArrowY);
+        }
+
         drawDequeContainer(ctx, startingPointX, startingPointY, containerWidth, containerHeight);
         // draw 'front' text above the container
         drawFrontText(ctx, startingPointX, startingPointY - 10, dequeItemWidth);
@@ -93,6 +109,7 @@ const DequeCanvas = ({ dequeItems }) => {
   const drawDequeContainer = (ctx, startX, startY, containerWidth, containerHeight) => {
     ctx.lineWidth = 7;
     // upper side of the queue container
+    ctx.beginPath();
     ctx.moveTo(startX, startY);
     ctx.lineTo(startX + containerWidth, startY);
 
@@ -155,7 +172,38 @@ const DequeCanvas = ({ dequeItems }) => {
     const rearX = startX + (itemWidth - rearTextWidth) / 2 + (itemGap + itemWidth) * index;
     const rearY = startY + containerHeight + 20;
 
-    ctx.fillText('Rear', rearX, rearY);
+    ctx.fillText('Back', rearX, rearY);
+  }
+
+  const drawForwardArrow = (ctx, fromX, fromY, toX, toY) => {
+    ctx.beginPath();
+    let headlen = 9; // length of head in pixels
+    let dx = toX - fromX;
+    let dy = toY - fromY;
+    let angle = Math.atan2(dy, dx);
+    ctx.strokeStyle = "#000";
+    ctx.moveTo(fromX, fromY);
+    ctx.lineTo(toX, toY);
+    ctx.lineTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
+    ctx.moveTo(toX, toY);
+    ctx.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
+    ctx.stroke();
+    ctx.closePath();
+  }
+
+  const drawBackwardArrow = (ctx, fromX, fromY, toX, toY) => {
+    ctx.beginPath();
+    let headlen = 9; // length of head in pixels
+    let dx = fromX - toX;
+    let dy = fromY - toY;
+    let angle = Math.atan2(dy, dx);
+    ctx.strokeStyle = "#000";
+    ctx.moveTo(toX, toY);
+    ctx.lineTo(fromX, fromY);
+    ctx.lineTo(fromX - headlen * Math.cos(angle - Math.PI / 6), fromY - headlen * Math.sin(angle - Math.PI / 6));
+    ctx.moveTo(fromX, fromY);
+    ctx.lineTo(fromX - headlen * Math.cos(angle + Math.PI / 6), fromY - headlen * Math.sin(angle + Math.PI / 6));
+    ctx.stroke();
   }
 
   return (

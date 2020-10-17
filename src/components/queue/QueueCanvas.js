@@ -70,6 +70,15 @@ const QueueCanvas = ({ queueItems }) => {
       const queueItemStartY = startingPointY + containerHeight * 0.07;
 
       if (i === 0) { // draw container only if it's first time to render
+        if (canvasWidth >= 1408) {
+          const leftArrowX = 30;
+          const rightArrowX = startingPointX + containerWidth + 30;
+          const ArrowY = startingPointY + containerHeight / 2;
+          // backward arrow (<-) at the left side
+          drawBackwardArrow(ctx, leftArrowX, ArrowY, leftArrowX + 60, ArrowY);
+          // backward arrow (<-) at the right side
+          drawBackwardArrow(ctx, rightArrowX, ArrowY, rightArrowX + 60, ArrowY);
+        }
         drawQueueContainer(ctx, startingPointX, startingPointY, containerWidth, containerHeight);
         // draw 'front' text above the container
         drawFrontText(ctx, startingPointX, startingPointY - 10, queueItemWidth);
@@ -92,6 +101,7 @@ const QueueCanvas = ({ queueItems }) => {
 
   const drawQueueContainer = (ctx, startX, startY, containerWidth, containerHeight) => {
     ctx.lineWidth = 7;
+    ctx.beginPath();
     // upper side of the queue container
     ctx.moveTo(startX, startY);
     ctx.lineTo(startX + containerWidth, startY);
@@ -156,6 +166,21 @@ const QueueCanvas = ({ queueItems }) => {
     const rearY = startY + containerHeight + 20;
 
     ctx.fillText('Rear', rearX, rearY);
+  }
+
+  const drawBackwardArrow = (ctx, fromX, fromY, toX, toY) => {
+    ctx.beginPath();
+    let headlen = 9; // length of head in pixels
+    let dx = fromX - toX;
+    let dy = fromY - toY;
+    let angle = Math.atan2(dy, dx);
+    ctx.strokeStyle = "#000";
+    ctx.moveTo(toX, toY);
+    ctx.lineTo(fromX, fromY);
+    ctx.lineTo(fromX - headlen * Math.cos(angle - Math.PI / 6), fromY - headlen * Math.sin(angle - Math.PI / 6));
+    ctx.moveTo(fromX, fromY);
+    ctx.lineTo(fromX - headlen * Math.cos(angle + Math.PI / 6), fromY - headlen * Math.sin(angle + Math.PI / 6));
+    ctx.stroke();
   }
 
   return (
