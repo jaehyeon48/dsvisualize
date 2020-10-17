@@ -56,7 +56,7 @@ const QueueCanvas = ({ queueItems }) => {
     }
 
     const queueSize = queueItems.length - 1;
-    queueItems.forEach((stackData, i) => {
+    queueItems.forEach((queueData, i) => {
       ctx.textAlign = 'start';
       ctx.font = `normal ${fontSize}px sans-serif`;
 
@@ -81,7 +81,7 @@ const QueueCanvas = ({ queueItems }) => {
       const printY = startingPointY + containerHeight * 0.15;
       const maxWidthOfData = queueItemWidth * 0.9;  // maximum width of data inside of each nodes
 
-      printData(ctx, stackData, printX, printY, 18, maxWidthOfData);
+      printData(ctx, queueData, printX, printY, 18, maxWidthOfData);
 
       if (i === queueSize) {
         // draw 'rear' text below the container
