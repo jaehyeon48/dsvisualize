@@ -2,14 +2,14 @@ This simple web app visualizes data structures.
 
 Current support of data structures are:
 
-## Singly Linked List
+**Singly Linked List**
 
-## Doubly Linked List
+**Doubly Linked List**
 
-## Stack
+**Stack**
 
-## Queue
+**Queue**
 
-## Deque
+**Deque**
 
-## Binary Search Tree
+**Binary Search Tree**
