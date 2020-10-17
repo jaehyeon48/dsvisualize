@@ -32,6 +32,7 @@
 
 .sll {
   background-color: #ff6384;
+  color: #000;
 }
 
 .sll:hover {
@@ -40,6 +41,7 @@
 
 .dll {
   background-color: #36a2eb;
+  color: #000;
 }
 
 .dll:hover {
@@ -48,6 +50,7 @@
 
 .stack {
   background-color: #ffcc4a;
+  color: #000;
 }
 
 .stack:hover {
@@ -56,6 +59,7 @@
 
 .queue {
   background-color: #4bc0c0;
+  color: #000;
 }
 
 .queue:hover {
@@ -73,6 +77,7 @@
 
 .bst {
   background-color: #ff9f40;
+  color: #000;
 }
 
 .bst:hover {
