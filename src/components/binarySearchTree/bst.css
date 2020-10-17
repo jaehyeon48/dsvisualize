@@ -73,7 +73,6 @@
 
 .btn-bst-remove {
   background-color: #30aee0;
-  color: #fff;
 }
 
 .btn-bst-remove:hover {
@@ -82,7 +81,6 @@
 
 .btn-bst-clear {
   background-color: #f34343;
-  color: #fff;
 }
 
 .btn-bst-clear:hover {
@@ -94,6 +92,17 @@
   display: flex;
   margin: 5rem 1rem 3rem;
   height: 700px;
+}
+
+.bst-methods-info-bg {
+  width: 30vw;
+  /* left: calc(50vw - 200px); */
+  left: 35vw;
+  position: fixed;
+  background-color: #dbe9e8;
+  z-index: 99;
+  border: 1px solid black;
+  height: 300px;
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1439px) {
